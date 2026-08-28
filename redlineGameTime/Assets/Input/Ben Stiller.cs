@@ -140,7 +140,7 @@ public partial class @BenStiller: IInputActionCollection2, IDisposable
                 {
                     ""name"": ""left"",
                     ""id"": ""20a53ccd-24f5-4f4b-9bf9-8d0b13a2431f"",
-                    ""path"": ""<Keyboard>/l"",
+                    ""path"": ""<Keyboard>/a"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
@@ -151,7 +151,7 @@ public partial class @BenStiller: IInputActionCollection2, IDisposable
                 {
                     ""name"": ""right"",
                     ""id"": ""d3d4c21e-5c5b-4c94-8f08-6fd4433aea65"",
-                    ""path"": ""<Keyboard>/r"",
+                    ""path"": ""<Keyboard>/d"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
