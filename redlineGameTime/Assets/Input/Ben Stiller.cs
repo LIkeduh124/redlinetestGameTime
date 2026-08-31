@@ -101,6 +101,16 @@ public partial class @BenStiller: IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""initialStateCheck"": false,
                     ""priority"": 0
+                },
+                {
+                    ""name"": ""Attack"",
+                    ""type"": ""PassThrough"",
+                    ""id"": ""06fe6ed1-16de-4964-9613-44799f1ce6ff"",
+                    ""expectedControlType"": ""Key"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false,
+                    ""priority"": 0
                 }
             ],
             ""bindings"": [
@@ -158,6 +168,17 @@ public partial class @BenStiller: IInputActionCollection2, IDisposable
                     ""action"": ""Left and Right"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""1c4fe410-d0b6-4a29-bea6-0eeaabd70e3c"",
+                    ""path"": """",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Attack"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -167,6 +188,7 @@ public partial class @BenStiller: IInputActionCollection2, IDisposable
         // Shmovement
         m_Shmovement = asset.FindActionMap("Shmovement", throwIfNotFound: true);
         m_Shmovement_LeftandRight = m_Shmovement.FindAction("Left and Right", throwIfNotFound: true);
+        m_Shmovement_Attack = m_Shmovement.FindAction("Attack", throwIfNotFound: true);
     }
 
     ~@BenStiller()
@@ -248,6 +270,7 @@ public partial class @BenStiller: IInputActionCollection2, IDisposable
     private readonly InputActionMap m_Shmovement;
     private List<IShmovementActions> m_ShmovementActionsCallbackInterfaces = new List<IShmovementActions>();
     private readonly InputAction m_Shmovement_LeftandRight;
+    private readonly InputAction m_Shmovement_Attack;
     /// <summary>
     /// Provides access to input actions defined in input action map "Shmovement".
     /// </summary>
@@ -263,6 +286,10 @@ public partial class @BenStiller: IInputActionCollection2, IDisposable
         /// Provides access to the underlying input action "Shmovement/LeftandRight".
         /// </summary>
         public InputAction @LeftandRight => m_Wrapper.m_Shmovement_LeftandRight;
+        /// <summary>
+        /// Provides access to the underlying input action "Shmovement/Attack".
+        /// </summary>
+        public InputAction @Attack => m_Wrapper.m_Shmovement_Attack;
         /// <summary>
         /// Provides access to the underlying input action map instance.
         /// </summary>
@@ -292,6 +319,9 @@ public partial class @BenStiller: IInputActionCollection2, IDisposable
             @LeftandRight.started += instance.OnLeftandRight;
             @LeftandRight.performed += instance.OnLeftandRight;
             @LeftandRight.canceled += instance.OnLeftandRight;
+            @Attack.started += instance.OnAttack;
+            @Attack.performed += instance.OnAttack;
+            @Attack.canceled += instance.OnAttack;
         }
 
         /// <summary>
@@ -306,6 +336,9 @@ public partial class @BenStiller: IInputActionCollection2, IDisposable
             @LeftandRight.started -= instance.OnLeftandRight;
             @LeftandRight.performed -= instance.OnLeftandRight;
             @LeftandRight.canceled -= instance.OnLeftandRight;
+            @Attack.started -= instance.OnAttack;
+            @Attack.performed -= instance.OnAttack;
+            @Attack.canceled -= instance.OnAttack;
         }
 
         /// <summary>
@@ -353,5 +386,12 @@ public partial class @BenStiller: IInputActionCollection2, IDisposable
         /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
         /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
         void OnLeftandRight(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "Attack" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnAttack(InputAction.CallbackContext context);
     }
 }
