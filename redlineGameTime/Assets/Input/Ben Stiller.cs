@@ -101,16 +101,6 @@ public partial class @BenStiller: IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""initialStateCheck"": false,
                     ""priority"": 0
-                },
-                {
-                    ""name"": ""Attack"",
-                    ""type"": ""Button"",
-                    ""id"": ""06fe6ed1-16de-4964-9613-44799f1ce6ff"",
-                    ""expectedControlType"": """",
-                    ""processors"": """",
-                    ""interactions"": """",
-                    ""initialStateCheck"": false,
-                    ""priority"": 0
                 }
             ],
             ""bindings"": [
@@ -168,12 +158,30 @@ public partial class @BenStiller: IInputActionCollection2, IDisposable
                     ""action"": ""Left and Right"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
-                },
+                }
+            ]
+        },
+        {
+            ""name"": ""Combat"",
+            ""id"": ""a2d5b22f-db24-4828-b653-bd27076c4372"",
+            ""actions"": [
+                {
+                    ""name"": ""Attack"",
+                    ""type"": ""Button"",
+                    ""id"": ""c1e9cca4-8ae7-4a58-a993-2c24e7cd363d"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false,
+                    ""priority"": 0
+                }
+            ],
+            ""bindings"": [
                 {
                     ""name"": """",
-                    ""id"": ""1c4fe410-d0b6-4a29-bea6-0eeaabd70e3c"",
-                    ""path"": """",
-                    ""interactions"": """",
+                    ""id"": ""406673be-26c7-49ee-a453-b375f8aeafa0"",
+                    ""path"": ""<Keyboard>/j"",
+                    ""interactions"": ""SlowTap"",
                     ""processors"": """",
                     ""groups"": """",
                     ""action"": ""Attack"",
@@ -182,7 +190,7 @@ public partial class @BenStiller: IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": """",
-                    ""id"": ""2104b9dd-63b0-4b5b-b88a-fab669f1d0f6"",
+                    ""id"": ""6e983648-493c-4861-910c-10a82b939f9d"",
                     ""path"": """",
                     ""interactions"": """",
                     ""processors"": """",
@@ -199,12 +207,15 @@ public partial class @BenStiller: IInputActionCollection2, IDisposable
         // Shmovement
         m_Shmovement = asset.FindActionMap("Shmovement", throwIfNotFound: true);
         m_Shmovement_LeftandRight = m_Shmovement.FindAction("Left and Right", throwIfNotFound: true);
-        m_Shmovement_Attack = m_Shmovement.FindAction("Attack", throwIfNotFound: true);
+        // Combat
+        m_Combat = asset.FindActionMap("Combat", throwIfNotFound: true);
+        m_Combat_Attack = m_Combat.FindAction("Attack", throwIfNotFound: true);
     }
 
     ~@BenStiller()
     {
         UnityEngine.Debug.Assert(!m_Shmovement.enabled, "This will cause a leak and performance issues, BenStiller.Shmovement.Disable() has not been called.");
+        UnityEngine.Debug.Assert(!m_Combat.enabled, "This will cause a leak and performance issues, BenStiller.Combat.Disable() has not been called.");
     }
 
     /// <summary>
@@ -281,7 +292,6 @@ public partial class @BenStiller: IInputActionCollection2, IDisposable
     private readonly InputActionMap m_Shmovement;
     private List<IShmovementActions> m_ShmovementActionsCallbackInterfaces = new List<IShmovementActions>();
     private readonly InputAction m_Shmovement_LeftandRight;
-    private readonly InputAction m_Shmovement_Attack;
     /// <summary>
     /// Provides access to input actions defined in input action map "Shmovement".
     /// </summary>
@@ -297,10 +307,6 @@ public partial class @BenStiller: IInputActionCollection2, IDisposable
         /// Provides access to the underlying input action "Shmovement/LeftandRight".
         /// </summary>
         public InputAction @LeftandRight => m_Wrapper.m_Shmovement_LeftandRight;
-        /// <summary>
-        /// Provides access to the underlying input action "Shmovement/Attack".
-        /// </summary>
-        public InputAction @Attack => m_Wrapper.m_Shmovement_Attack;
         /// <summary>
         /// Provides access to the underlying input action map instance.
         /// </summary>
@@ -330,9 +336,6 @@ public partial class @BenStiller: IInputActionCollection2, IDisposable
             @LeftandRight.started += instance.OnLeftandRight;
             @LeftandRight.performed += instance.OnLeftandRight;
             @LeftandRight.canceled += instance.OnLeftandRight;
-            @Attack.started += instance.OnAttack;
-            @Attack.performed += instance.OnAttack;
-            @Attack.canceled += instance.OnAttack;
         }
 
         /// <summary>
@@ -347,9 +350,6 @@ public partial class @BenStiller: IInputActionCollection2, IDisposable
             @LeftandRight.started -= instance.OnLeftandRight;
             @LeftandRight.performed -= instance.OnLeftandRight;
             @LeftandRight.canceled -= instance.OnLeftandRight;
-            @Attack.started -= instance.OnAttack;
-            @Attack.performed -= instance.OnAttack;
-            @Attack.canceled -= instance.OnAttack;
         }
 
         /// <summary>
@@ -383,6 +383,102 @@ public partial class @BenStiller: IInputActionCollection2, IDisposable
     /// Provides a new <see cref="ShmovementActions" /> instance referencing this action map.
     /// </summary>
     public ShmovementActions @Shmovement => new ShmovementActions(this);
+
+    // Combat
+    private readonly InputActionMap m_Combat;
+    private List<ICombatActions> m_CombatActionsCallbackInterfaces = new List<ICombatActions>();
+    private readonly InputAction m_Combat_Attack;
+    /// <summary>
+    /// Provides access to input actions defined in input action map "Combat".
+    /// </summary>
+    public struct CombatActions
+    {
+        private @BenStiller m_Wrapper;
+
+        /// <summary>
+        /// Construct a new instance of the input action map wrapper class.
+        /// </summary>
+        public CombatActions(@BenStiller wrapper) { m_Wrapper = wrapper; }
+        /// <summary>
+        /// Provides access to the underlying input action "Combat/Attack".
+        /// </summary>
+        public InputAction @Attack => m_Wrapper.m_Combat_Attack;
+        /// <summary>
+        /// Provides access to the underlying input action map instance.
+        /// </summary>
+        public InputActionMap Get() { return m_Wrapper.m_Combat; }
+        /// <inheritdoc cref="UnityEngine.InputSystem.InputActionMap.Enable()" />
+        public void Enable() { Get().Enable(); }
+        /// <inheritdoc cref="UnityEngine.InputSystem.InputActionMap.Disable()" />
+        public void Disable() { Get().Disable(); }
+        /// <inheritdoc cref="UnityEngine.InputSystem.InputActionMap.enabled" />
+        public bool enabled => Get().enabled;
+        /// <summary>
+        /// Implicitly converts an <see ref="CombatActions" /> to an <see ref="InputActionMap" /> instance.
+        /// </summary>
+        public static implicit operator InputActionMap(CombatActions set) { return set.Get(); }
+        /// <summary>
+        /// Adds <see cref="InputAction.started"/>, <see cref="InputAction.performed"/> and <see cref="InputAction.canceled"/> callbacks provided via <param cref="instance" /> on all input actions contained in this map.
+        /// </summary>
+        /// <param name="instance">Callback instance.</param>
+        /// <remarks>
+        /// If <paramref name="instance" /> is <c>null</c> or <paramref name="instance"/> have already been added this method does nothing.
+        /// </remarks>
+        /// <seealso cref="CombatActions" />
+        public void AddCallbacks(ICombatActions instance)
+        {
+            if (instance == null || m_Wrapper.m_CombatActionsCallbackInterfaces.Contains(instance)) return;
+            m_Wrapper.m_CombatActionsCallbackInterfaces.Add(instance);
+            @Attack.started += instance.OnAttack;
+            @Attack.performed += instance.OnAttack;
+            @Attack.canceled += instance.OnAttack;
+        }
+
+        /// <summary>
+        /// Removes <see cref="InputAction.started"/>, <see cref="InputAction.performed"/> and <see cref="InputAction.canceled"/> callbacks provided via <param cref="instance" /> on all input actions contained in this map.
+        /// </summary>
+        /// <remarks>
+        /// Calling this method when <paramref name="instance" /> have not previously been registered has no side-effects.
+        /// </remarks>
+        /// <seealso cref="CombatActions" />
+        private void UnregisterCallbacks(ICombatActions instance)
+        {
+            @Attack.started -= instance.OnAttack;
+            @Attack.performed -= instance.OnAttack;
+            @Attack.canceled -= instance.OnAttack;
+        }
+
+        /// <summary>
+        /// Unregisters <param cref="instance" /> and unregisters all input action callbacks via <see cref="CombatActions.UnregisterCallbacks(ICombatActions)" />.
+        /// </summary>
+        /// <seealso cref="CombatActions.UnregisterCallbacks(ICombatActions)" />
+        public void RemoveCallbacks(ICombatActions instance)
+        {
+            if (m_Wrapper.m_CombatActionsCallbackInterfaces.Remove(instance))
+                UnregisterCallbacks(instance);
+        }
+
+        /// <summary>
+        /// Replaces all existing callback instances and previously registered input action callbacks associated with them with callbacks provided via <param cref="instance" />.
+        /// </summary>
+        /// <remarks>
+        /// If <paramref name="instance" /> is <c>null</c>, calling this method will only unregister all existing callbacks but not register any new callbacks.
+        /// </remarks>
+        /// <seealso cref="CombatActions.AddCallbacks(ICombatActions)" />
+        /// <seealso cref="CombatActions.RemoveCallbacks(ICombatActions)" />
+        /// <seealso cref="CombatActions.UnregisterCallbacks(ICombatActions)" />
+        public void SetCallbacks(ICombatActions instance)
+        {
+            foreach (var item in m_Wrapper.m_CombatActionsCallbackInterfaces)
+                UnregisterCallbacks(item);
+            m_Wrapper.m_CombatActionsCallbackInterfaces.Clear();
+            AddCallbacks(instance);
+        }
+    }
+    /// <summary>
+    /// Provides a new <see cref="CombatActions" /> instance referencing this action map.
+    /// </summary>
+    public CombatActions @Combat => new CombatActions(this);
     /// <summary>
     /// Interface to implement callback methods for all input action callbacks associated with input actions defined by "Shmovement" which allows adding and removing callbacks.
     /// </summary>
@@ -397,6 +493,14 @@ public partial class @BenStiller: IInputActionCollection2, IDisposable
         /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
         /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
         void OnLeftandRight(InputAction.CallbackContext context);
+    }
+    /// <summary>
+    /// Interface to implement callback methods for all input action callbacks associated with input actions defined by "Combat" which allows adding and removing callbacks.
+    /// </summary>
+    /// <seealso cref="CombatActions.AddCallbacks(ICombatActions)" />
+    /// <seealso cref="CombatActions.RemoveCallbacks(ICombatActions)" />
+    public interface ICombatActions
+    {
         /// <summary>
         /// Method invoked when associated input action "Attack" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
         /// </summary>

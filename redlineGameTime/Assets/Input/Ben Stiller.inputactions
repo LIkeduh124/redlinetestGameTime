@@ -15,16 +15,6 @@
                     "interactions": "",
                     "initialStateCheck": false,
                     "priority": 0
-                },
-                {
-                    "name": "Attack",
-                    "type": "Button",
-                    "id": "06fe6ed1-16de-4964-9613-44799f1ce6ff",
-                    "expectedControlType": "",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false,
-                    "priority": 0
                 }
             ],
             "bindings": [
@@ -82,12 +72,30 @@
                     "action": "Left and Right",
                     "isComposite": false,
                     "isPartOfComposite": true
-                },
+                }
+            ]
+        },
+        {
+            "name": "Combat",
+            "id": "a2d5b22f-db24-4828-b653-bd27076c4372",
+            "actions": [
+                {
+                    "name": "Attack",
+                    "type": "Button",
+                    "id": "c1e9cca4-8ae7-4a58-a993-2c24e7cd363d",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false,
+                    "priority": 0
+                }
+            ],
+            "bindings": [
                 {
                     "name": "",
-                    "id": "1c4fe410-d0b6-4a29-bea6-0eeaabd70e3c",
-                    "path": "",
-                    "interactions": "",
+                    "id": "406673be-26c7-49ee-a453-b375f8aeafa0",
+                    "path": "<Keyboard>/j",
+                    "interactions": "SlowTap",
                     "processors": "",
                     "groups": "",
                     "action": "Attack",
@@ -96,7 +104,7 @@
                 },
                 {
                     "name": "",
-                    "id": "2104b9dd-63b0-4b5b-b88a-fab669f1d0f6",
+                    "id": "6e983648-493c-4861-910c-10a82b939f9d",
                     "path": "",
                     "interactions": "",
                     "processors": "",

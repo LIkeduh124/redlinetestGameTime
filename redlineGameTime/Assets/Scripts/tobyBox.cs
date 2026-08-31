@@ -1,5 +1,5 @@
 using UnityEngine;
-
+using UnityEngine.InputSystem;
 public class NewMonoBehaviourScript : MonoBehaviour
 {
     [SerializeField] private float speed = 5.0f;
