@@ -7,11 +7,13 @@ public class Appears : MonoBehaviour
     private BenStiller benStiller;
     private Button toddHowad;
     private SpriteRenderer spriteRenderer;
+    private Time time;
 
     private void Awake()
     {
         benStiller = new BenStiller();
         spriteRenderer = GetComponent<SpriteRenderer>();
+        toddHowad = GetComponent<Button>();
     }
 
     private void OnEnable()
@@ -26,12 +28,13 @@ public class Appears : MonoBehaviour
 
     private void Update()
     {
+      
         Appear();
     }
 
     private void Appear()
     {
-        if ((benStiller.Combat.Attack.IsPressed())&&spriteRenderer.enabled == true)
+        if ((toddHowad.IsPressed())&&spriteRenderer.enabled == true)
         {
             spriteRenderer.enabled = false;
         }
