@@ -104,9 +104,9 @@ public partial class @BenStiller: IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": ""Attack"",
-                    ""type"": ""PassThrough"",
+                    ""type"": ""Button"",
                     ""id"": ""06fe6ed1-16de-4964-9613-44799f1ce6ff"",
-                    ""expectedControlType"": ""Key"",
+                    ""expectedControlType"": """",
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false,
@@ -172,6 +172,17 @@ public partial class @BenStiller: IInputActionCollection2, IDisposable
                 {
                     ""name"": """",
                     ""id"": ""1c4fe410-d0b6-4a29-bea6-0eeaabd70e3c"",
+                    ""path"": """",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Attack"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""2104b9dd-63b0-4b5b-b88a-fab669f1d0f6"",
                     ""path"": """",
                     ""interactions"": """",
                     ""processors"": """",
