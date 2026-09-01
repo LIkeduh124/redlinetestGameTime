@@ -6,7 +6,7 @@ public class Appears : MonoBehaviour
 {
     private BenStiller benStiller;
     private Button toddHowad;
-    private SpriteRenderer spriteRenderer;
+    public SpriteRenderer spriteRenderer;
     private float time;
     private bool checker;
 

@@ -1,16 +1,16 @@
 using UnityEngine;
+using UnityEngine.UIElements;
 
 public class Display : MonoBehaviour
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    public float amount;
+    private RectTransform rectTransform;
+    private void Awake()
     {
         
+        rectTransform = GetComponent<RectTransform>();
+        amount = rectTransform.sizeDelta.x;
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    
 }
