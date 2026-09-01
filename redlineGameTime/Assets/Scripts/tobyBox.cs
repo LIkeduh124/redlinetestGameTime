@@ -9,6 +9,8 @@ public class NewMonoBehaviourScript : MonoBehaviour
     //rigidBody2d
 
     private Rigidbody2D rigidbody;
+    private PolygonCollider2D polygonCollider;
+    
 
     private SpriteRenderer spriteRenderer;
     private void Awake()
@@ -16,6 +18,7 @@ public class NewMonoBehaviourScript : MonoBehaviour
         benStiller = new BenStiller();
         spriteRenderer = GetComponent<SpriteRenderer>();
         rigidbody = GetComponent<Rigidbody2D>();
+        polygonCollider = GetComponent<PolygonCollider2D>();
     }
 
     private void OnEnable()
@@ -35,7 +38,8 @@ public class NewMonoBehaviourScript : MonoBehaviour
 
     private void FixedUpdate()
     {
-        Move();
+        Move(speed);
+        OnTriggerEnter();
     }
 
     private void PlayerInput()
@@ -46,8 +50,17 @@ public class NewMonoBehaviourScript : MonoBehaviour
         Debug.Log(movement);
     }
 
-    private void Move()
+    private void Move(float speed)
     {
        rigidbody.MovePosition(rigidbody.position + movement * speed * Time.fixedDeltaTime);
+    }
+
+    private void OnTriggerEnter(Collider2D collision)
+    {
+        if (collision.Equals("Ouch"))
+        {
+            Move(speed*3);
+        }
+
     }
 }
