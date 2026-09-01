@@ -200,6 +200,46 @@ public partial class @BenStiller: IInputActionCollection2, IDisposable
                     ""isPartOfComposite"": false
                 }
             ]
+        },
+        {
+            ""name"": ""PlayButton"",
+            ""id"": ""397900e7-5d45-4d1c-8f1c-a314f884b6ed"",
+            ""actions"": [
+                {
+                    ""name"": ""Click"",
+                    ""type"": ""Button"",
+                    ""id"": ""62332266-d1f6-41c6-8345-ee6e665b1424"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false,
+                    ""priority"": 0
+                }
+            ],
+            ""bindings"": [
+                {
+                    ""name"": """",
+                    ""id"": ""6fb84a94-e52d-4bf8-8de4-4b170ae796a2"",
+                    ""path"": """",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Click"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""606b3ca1-f971-40dc-9d47-e33e6add3dd2"",
+                    ""path"": ""<Mouse>/leftButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Click"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                }
+            ]
         }
     ],
     ""controlSchemes"": []
@@ -210,12 +250,16 @@ public partial class @BenStiller: IInputActionCollection2, IDisposable
         // Combat
         m_Combat = asset.FindActionMap("Combat", throwIfNotFound: true);
         m_Combat_Attack = m_Combat.FindAction("Attack", throwIfNotFound: true);
+        // PlayButton
+        m_PlayButton = asset.FindActionMap("PlayButton", throwIfNotFound: true);
+        m_PlayButton_Click = m_PlayButton.FindAction("Click", throwIfNotFound: true);
     }
 
     ~@BenStiller()
     {
         UnityEngine.Debug.Assert(!m_Shmovement.enabled, "This will cause a leak and performance issues, BenStiller.Shmovement.Disable() has not been called.");
         UnityEngine.Debug.Assert(!m_Combat.enabled, "This will cause a leak and performance issues, BenStiller.Combat.Disable() has not been called.");
+        UnityEngine.Debug.Assert(!m_PlayButton.enabled, "This will cause a leak and performance issues, BenStiller.PlayButton.Disable() has not been called.");
     }
 
     /// <summary>
@@ -479,6 +523,102 @@ public partial class @BenStiller: IInputActionCollection2, IDisposable
     /// Provides a new <see cref="CombatActions" /> instance referencing this action map.
     /// </summary>
     public CombatActions @Combat => new CombatActions(this);
+
+    // PlayButton
+    private readonly InputActionMap m_PlayButton;
+    private List<IPlayButtonActions> m_PlayButtonActionsCallbackInterfaces = new List<IPlayButtonActions>();
+    private readonly InputAction m_PlayButton_Click;
+    /// <summary>
+    /// Provides access to input actions defined in input action map "PlayButton".
+    /// </summary>
+    public struct PlayButtonActions
+    {
+        private @BenStiller m_Wrapper;
+
+        /// <summary>
+        /// Construct a new instance of the input action map wrapper class.
+        /// </summary>
+        public PlayButtonActions(@BenStiller wrapper) { m_Wrapper = wrapper; }
+        /// <summary>
+        /// Provides access to the underlying input action "PlayButton/Click".
+        /// </summary>
+        public InputAction @Click => m_Wrapper.m_PlayButton_Click;
+        /// <summary>
+        /// Provides access to the underlying input action map instance.
+        /// </summary>
+        public InputActionMap Get() { return m_Wrapper.m_PlayButton; }
+        /// <inheritdoc cref="UnityEngine.InputSystem.InputActionMap.Enable()" />
+        public void Enable() { Get().Enable(); }
+        /// <inheritdoc cref="UnityEngine.InputSystem.InputActionMap.Disable()" />
+        public void Disable() { Get().Disable(); }
+        /// <inheritdoc cref="UnityEngine.InputSystem.InputActionMap.enabled" />
+        public bool enabled => Get().enabled;
+        /// <summary>
+        /// Implicitly converts an <see ref="PlayButtonActions" /> to an <see ref="InputActionMap" /> instance.
+        /// </summary>
+        public static implicit operator InputActionMap(PlayButtonActions set) { return set.Get(); }
+        /// <summary>
+        /// Adds <see cref="InputAction.started"/>, <see cref="InputAction.performed"/> and <see cref="InputAction.canceled"/> callbacks provided via <param cref="instance" /> on all input actions contained in this map.
+        /// </summary>
+        /// <param name="instance">Callback instance.</param>
+        /// <remarks>
+        /// If <paramref name="instance" /> is <c>null</c> or <paramref name="instance"/> have already been added this method does nothing.
+        /// </remarks>
+        /// <seealso cref="PlayButtonActions" />
+        public void AddCallbacks(IPlayButtonActions instance)
+        {
+            if (instance == null || m_Wrapper.m_PlayButtonActionsCallbackInterfaces.Contains(instance)) return;
+            m_Wrapper.m_PlayButtonActionsCallbackInterfaces.Add(instance);
+            @Click.started += instance.OnClick;
+            @Click.performed += instance.OnClick;
+            @Click.canceled += instance.OnClick;
+        }
+
+        /// <summary>
+        /// Removes <see cref="InputAction.started"/>, <see cref="InputAction.performed"/> and <see cref="InputAction.canceled"/> callbacks provided via <param cref="instance" /> on all input actions contained in this map.
+        /// </summary>
+        /// <remarks>
+        /// Calling this method when <paramref name="instance" /> have not previously been registered has no side-effects.
+        /// </remarks>
+        /// <seealso cref="PlayButtonActions" />
+        private void UnregisterCallbacks(IPlayButtonActions instance)
+        {
+            @Click.started -= instance.OnClick;
+            @Click.performed -= instance.OnClick;
+            @Click.canceled -= instance.OnClick;
+        }
+
+        /// <summary>
+        /// Unregisters <param cref="instance" /> and unregisters all input action callbacks via <see cref="PlayButtonActions.UnregisterCallbacks(IPlayButtonActions)" />.
+        /// </summary>
+        /// <seealso cref="PlayButtonActions.UnregisterCallbacks(IPlayButtonActions)" />
+        public void RemoveCallbacks(IPlayButtonActions instance)
+        {
+            if (m_Wrapper.m_PlayButtonActionsCallbackInterfaces.Remove(instance))
+                UnregisterCallbacks(instance);
+        }
+
+        /// <summary>
+        /// Replaces all existing callback instances and previously registered input action callbacks associated with them with callbacks provided via <param cref="instance" />.
+        /// </summary>
+        /// <remarks>
+        /// If <paramref name="instance" /> is <c>null</c>, calling this method will only unregister all existing callbacks but not register any new callbacks.
+        /// </remarks>
+        /// <seealso cref="PlayButtonActions.AddCallbacks(IPlayButtonActions)" />
+        /// <seealso cref="PlayButtonActions.RemoveCallbacks(IPlayButtonActions)" />
+        /// <seealso cref="PlayButtonActions.UnregisterCallbacks(IPlayButtonActions)" />
+        public void SetCallbacks(IPlayButtonActions instance)
+        {
+            foreach (var item in m_Wrapper.m_PlayButtonActionsCallbackInterfaces)
+                UnregisterCallbacks(item);
+            m_Wrapper.m_PlayButtonActionsCallbackInterfaces.Clear();
+            AddCallbacks(instance);
+        }
+    }
+    /// <summary>
+    /// Provides a new <see cref="PlayButtonActions" /> instance referencing this action map.
+    /// </summary>
+    public PlayButtonActions @PlayButton => new PlayButtonActions(this);
     /// <summary>
     /// Interface to implement callback methods for all input action callbacks associated with input actions defined by "Shmovement" which allows adding and removing callbacks.
     /// </summary>
@@ -508,5 +648,20 @@ public partial class @BenStiller: IInputActionCollection2, IDisposable
         /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
         /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
         void OnAttack(InputAction.CallbackContext context);
+    }
+    /// <summary>
+    /// Interface to implement callback methods for all input action callbacks associated with input actions defined by "PlayButton" which allows adding and removing callbacks.
+    /// </summary>
+    /// <seealso cref="PlayButtonActions.AddCallbacks(IPlayButtonActions)" />
+    /// <seealso cref="PlayButtonActions.RemoveCallbacks(IPlayButtonActions)" />
+    public interface IPlayButtonActions
+    {
+        /// <summary>
+        /// Method invoked when associated input action "Click" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnClick(InputAction.CallbackContext context);
     }
 }
