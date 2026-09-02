@@ -404,6 +404,7 @@ GameObject:
   - component: {fileID: 958988533}
   - component: {fileID: 958988532}
   - component: {fileID: 958988531}
+  - component: {fileID: 958988535}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -496,6 +497,18 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!114 &958988535
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 958988530}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 81eb057c7af3e4c47b3b1a8fe243ffcb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::MainMenu
 --- !u!1 &1183748951
 GameObject:
   m_ObjectHideFlags: 0
@@ -690,8 +703,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 422284393}
-        m_TargetAssemblyTypeName: ButtonPlay, Assembly-CSharp
+      - m_Target: {fileID: 958988535}
+        m_TargetAssemblyTypeName: MainMenu, Assembly-CSharp
         m_MethodName: PlayGame
         m_Mode: 1
         m_Arguments:
