@@ -1,3 +1,4 @@
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
 public class NewMonoBehaviourScript : MonoBehaviour
@@ -10,6 +11,7 @@ public class NewMonoBehaviourScript : MonoBehaviour
 
     private Rigidbody2D rigidbody;
     private PolygonCollider2D polygonCollider;
+    private float stun;
     
 
     private SpriteRenderer spriteRenderer;
@@ -19,6 +21,8 @@ public class NewMonoBehaviourScript : MonoBehaviour
         spriteRenderer = GetComponent<SpriteRenderer>();
         rigidbody = GetComponent<Rigidbody2D>();
         polygonCollider = GetComponent<PolygonCollider2D>();
+        stun = 0.0f;
+        
     }
 
     private void OnEnable()
@@ -33,13 +37,26 @@ public class NewMonoBehaviourScript : MonoBehaviour
 
     private void Update()
     {
-        PlayerInput();
+        if (stun <= 0.0f)
+        {
+            PlayerInput();
+            stun = 0.0f;
+            rigidbody.gravityScale = 1.0f;
+        }
+        else
+        {
+            rigidbody.gravityScale = 0.0f;
+            stun -= Time.deltaTime;
+            Debug.Log(stun);
+            KnockBack();
+        }
+        
     }
 
     private void FixedUpdate()
     {
         Move(speed);
-        OnTriggerEnter();
+        
     }
 
     private void PlayerInput()
@@ -55,12 +72,18 @@ public class NewMonoBehaviourScript : MonoBehaviour
        rigidbody.MovePosition(rigidbody.position + movement * speed * Time.fixedDeltaTime);
     }
 
-    private void OnTriggerEnter(Collider2D collision)
+    void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.Equals("Ouch"))
+        if (!(collision.gameObject.CompareTag("Floor")))
         {
-            Move(speed*3);
+            Move(-1*speed);
+            stun = 3.0f;
         }
+        
+    }
 
+    private void KnockBack()
+    {
+        rigidbody.MovePosition(-rigidbody.position);
     }
 }
