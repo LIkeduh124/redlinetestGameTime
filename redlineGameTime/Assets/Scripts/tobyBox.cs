@@ -6,12 +6,12 @@ public class NewMonoBehaviourScript : MonoBehaviour
     [SerializeField] private float speed = 5.0f;
 
     private BenStiller benStiller;
-    private Vector2 movement;
+    private Vector2 movement, reverse;
     //rigidBody2d
 
     private Rigidbody2D rigidbody;
     private PolygonCollider2D polygonCollider;
-    private float stun;
+    private float stun, lastX, lastY;
     
 
     private SpriteRenderer spriteRenderer;
@@ -22,6 +22,9 @@ public class NewMonoBehaviourScript : MonoBehaviour
         rigidbody = GetComponent<Rigidbody2D>();
         polygonCollider = GetComponent<PolygonCollider2D>();
         stun = 0.0f;
+        lastX = 0.0f;
+        lastY = 0.0f;
+        reverse = -(movement);
         
     }
 
@@ -48,15 +51,21 @@ public class NewMonoBehaviourScript : MonoBehaviour
             rigidbody.gravityScale = 0.0f;
             stun -= Time.deltaTime;
             Debug.Log(stun);
-            KnockBack();
+            
         }
         
     }
 
     private void FixedUpdate()
     {
-        Move(speed);
-        
+        if (stun <= 0.0f)
+        {
+            Move(speed);
+        }
+        else
+        {
+            KnockBack();
+        }
     }
 
     private void PlayerInput()
@@ -64,6 +73,7 @@ public class NewMonoBehaviourScript : MonoBehaviour
         //Defines how we move based on the values in our input map
         movement = benStiller.Shmovement.LeftandRight.ReadValue<Vector2>();
         //Shows our inputs in the console
+        reverse = -(movement);
         Debug.Log(movement);
     }
 
@@ -76,14 +86,14 @@ public class NewMonoBehaviourScript : MonoBehaviour
     {
         if (!(collision.gameObject.CompareTag("Floor")))
         {
-            Move(-1*speed);
-            stun = 3.0f;
+            
+            stun = .5f;
         }
         
     }
 
     private void KnockBack()
     {
-        rigidbody.MovePosition(-rigidbody.position);
+        rigidbody.MovePosition(rigidbody.position + reverse * speed * Time.fixedDeltaTime);
     }
 }
