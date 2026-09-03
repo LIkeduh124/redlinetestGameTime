@@ -11,7 +11,7 @@ public class NewMonoBehaviourScript : MonoBehaviour
 
     private Rigidbody2D rigidbody;
     private PolygonCollider2D polygonCollider;
-    private float stun, lastX, lastY;
+    private float stun;
     
 
     private SpriteRenderer spriteRenderer;
@@ -22,8 +22,7 @@ public class NewMonoBehaviourScript : MonoBehaviour
         rigidbody = GetComponent<Rigidbody2D>();
         polygonCollider = GetComponent<PolygonCollider2D>();
         stun = 0.0f;
-        lastX = 0.0f;
-        lastY = 0.0f;
+        
         reverse = -(movement);
         
     }
@@ -50,7 +49,7 @@ public class NewMonoBehaviourScript : MonoBehaviour
         {
             rigidbody.gravityScale = 0.0f;
             stun -= Time.deltaTime;
-            Debug.Log(stun);
+            //Debug.Log(stun);
             
         }
         
@@ -66,6 +65,7 @@ public class NewMonoBehaviourScript : MonoBehaviour
         {
             KnockBack();
         }
+        
     }
 
     private void PlayerInput()
@@ -74,7 +74,7 @@ public class NewMonoBehaviourScript : MonoBehaviour
         movement = benStiller.Shmovement.LeftandRight.ReadValue<Vector2>();
         //Shows our inputs in the console
         reverse = -(movement);
-        Debug.Log(movement);
+        //Debug.Log(movement);
     }
 
     private void Move(float speed)
@@ -84,11 +84,21 @@ public class NewMonoBehaviourScript : MonoBehaviour
 
     void OnCollisionEnter2D(Collision2D collision)
     {
-        if (!(collision.gameObject.CompareTag("Floor")))
+        if ((((collision.gameObject.CompareTag("Floor")))))
         {
-            
+            Debug.Log(collision.gameObject.name);
+
+        }
+        else if ((collision.gameObject.CompareTag("PhillipeHitbox")))
+        {
+            Debug.Log(collision.gameObject.name);
+        }
+        else
+        {
             stun = .5f;
         }
+
+        
         
     }
 
