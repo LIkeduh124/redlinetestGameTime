@@ -9,7 +9,7 @@ public class AttackMe : MonoBehaviour
     [SerializeField] GameObject father;
     private void Awake()
     {
-        rigidbody = GetComponent<Rigidbody2D>();
+        
         polygonCollider = GetComponent<CircleCollider2D>();
         spriteRenderer = GetComponent<SpriteRenderer>();
         joey = GetComponent<Transform>();
