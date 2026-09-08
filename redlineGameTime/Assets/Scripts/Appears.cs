@@ -33,7 +33,7 @@ public class Appears : MonoBehaviour
     {
         Appear();
         //CheckHeld();
-        Debug.Log(time);
+        
         
     }
 

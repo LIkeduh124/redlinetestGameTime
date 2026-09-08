@@ -89,10 +89,10 @@ public class NewMonoBehaviourScript : MonoBehaviour
             Debug.Log(collision.gameObject.name);
 
         }
-        //else if ((collision.gameObject.CompareTag("PhillipeHitbox")))
-        //{
-          //  Debug.Log(collision.gameObject.name);
-        //}
+        else if ((collision.gameObject.CompareTag("PhillipeHitbox")))
+        {
+            Debug.Log(collision.gameObject.name);
+        }
         else
         {
             stun = .5f;
