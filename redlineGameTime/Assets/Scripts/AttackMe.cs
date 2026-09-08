@@ -15,9 +15,5 @@ public class AttackMe : MonoBehaviour
         joey = GetComponent<Transform>();
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        joey.position = father.GetComponent<Transform>().position;
-    }
+   
 }
