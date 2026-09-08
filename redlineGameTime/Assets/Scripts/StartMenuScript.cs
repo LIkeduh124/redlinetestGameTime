@@ -6,6 +6,7 @@ public class StartMenuScript : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     public void PlayGame()
     {
+        //Load the first Scene
         Debug.Log("Game Start button pressed");
         SceneManager.LoadScene(1);
     }
@@ -19,7 +20,7 @@ public class StartMenuScript : MonoBehaviour
         // This stops play mode if you are testing inside the Unity Editor
         UnityEditor.EditorApplication.isPlaying = false;
 #endif
-        // This closes the actual built application (.exe, .app, etc.)
+        // This closes the actual app
         Application.Quit();
 
     }
