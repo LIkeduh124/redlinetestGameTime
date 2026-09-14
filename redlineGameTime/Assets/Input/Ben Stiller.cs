@@ -240,6 +240,79 @@ public partial class @BenStiller: IInputActionCollection2, IDisposable
                     ""isPartOfComposite"": false
                 }
             ]
+        },
+        {
+            ""name"": ""PlayerTwo"",
+            ""id"": ""474cd6fb-70a6-4c65-89d0-21dc5353f2c2"",
+            ""actions"": [
+                {
+                    ""name"": ""Movement"",
+                    ""type"": ""PassThrough"",
+                    ""id"": ""58a03c3a-87e3-465d-a028-4f102c5eb877"",
+                    ""expectedControlType"": ""Vector2"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true,
+                    ""priority"": 0
+                }
+            ],
+            ""bindings"": [
+                {
+                    ""name"": ""2D Vector"",
+                    ""id"": ""7373b593-c139-475c-8d51-d812d911c636"",
+                    ""path"": ""2DVector"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Movement"",
+                    ""isComposite"": true,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""up"",
+                    ""id"": ""a1e13959-d412-4816-b642-3cea9144c556"",
+                    ""path"": ""<Keyboard>/w"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Movement"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""down"",
+                    ""id"": ""5074abea-385c-4e77-95cf-96016d2578b1"",
+                    ""path"": ""<Keyboard>/s"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Movement"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""left"",
+                    ""id"": ""2cd07e1a-d7db-4abd-b279-8d9a53b539ea"",
+                    ""path"": ""<Keyboard>/l"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Movement"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""right"",
+                    ""id"": ""8aa08bb3-99a9-4b7c-b405-797dc2214934"",
+                    ""path"": ""<Keyboard>/r"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Movement"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                }
+            ]
         }
     ],
     ""controlSchemes"": []
@@ -253,6 +326,9 @@ public partial class @BenStiller: IInputActionCollection2, IDisposable
         // PlayButton
         m_PlayButton = asset.FindActionMap("PlayButton", throwIfNotFound: true);
         m_PlayButton_Click = m_PlayButton.FindAction("Click", throwIfNotFound: true);
+        // PlayerTwo
+        m_PlayerTwo = asset.FindActionMap("PlayerTwo", throwIfNotFound: true);
+        m_PlayerTwo_Movement = m_PlayerTwo.FindAction("Movement", throwIfNotFound: true);
     }
 
     ~@BenStiller()
@@ -260,6 +336,7 @@ public partial class @BenStiller: IInputActionCollection2, IDisposable
         UnityEngine.Debug.Assert(!m_Shmovement.enabled, "This will cause a leak and performance issues, BenStiller.Shmovement.Disable() has not been called.");
         UnityEngine.Debug.Assert(!m_Combat.enabled, "This will cause a leak and performance issues, BenStiller.Combat.Disable() has not been called.");
         UnityEngine.Debug.Assert(!m_PlayButton.enabled, "This will cause a leak and performance issues, BenStiller.PlayButton.Disable() has not been called.");
+        UnityEngine.Debug.Assert(!m_PlayerTwo.enabled, "This will cause a leak and performance issues, BenStiller.PlayerTwo.Disable() has not been called.");
     }
 
     /// <summary>
@@ -619,6 +696,102 @@ public partial class @BenStiller: IInputActionCollection2, IDisposable
     /// Provides a new <see cref="PlayButtonActions" /> instance referencing this action map.
     /// </summary>
     public PlayButtonActions @PlayButton => new PlayButtonActions(this);
+
+    // PlayerTwo
+    private readonly InputActionMap m_PlayerTwo;
+    private List<IPlayerTwoActions> m_PlayerTwoActionsCallbackInterfaces = new List<IPlayerTwoActions>();
+    private readonly InputAction m_PlayerTwo_Movement;
+    /// <summary>
+    /// Provides access to input actions defined in input action map "PlayerTwo".
+    /// </summary>
+    public struct PlayerTwoActions
+    {
+        private @BenStiller m_Wrapper;
+
+        /// <summary>
+        /// Construct a new instance of the input action map wrapper class.
+        /// </summary>
+        public PlayerTwoActions(@BenStiller wrapper) { m_Wrapper = wrapper; }
+        /// <summary>
+        /// Provides access to the underlying input action "PlayerTwo/Movement".
+        /// </summary>
+        public InputAction @Movement => m_Wrapper.m_PlayerTwo_Movement;
+        /// <summary>
+        /// Provides access to the underlying input action map instance.
+        /// </summary>
+        public InputActionMap Get() { return m_Wrapper.m_PlayerTwo; }
+        /// <inheritdoc cref="UnityEngine.InputSystem.InputActionMap.Enable()" />
+        public void Enable() { Get().Enable(); }
+        /// <inheritdoc cref="UnityEngine.InputSystem.InputActionMap.Disable()" />
+        public void Disable() { Get().Disable(); }
+        /// <inheritdoc cref="UnityEngine.InputSystem.InputActionMap.enabled" />
+        public bool enabled => Get().enabled;
+        /// <summary>
+        /// Implicitly converts an <see ref="PlayerTwoActions" /> to an <see ref="InputActionMap" /> instance.
+        /// </summary>
+        public static implicit operator InputActionMap(PlayerTwoActions set) { return set.Get(); }
+        /// <summary>
+        /// Adds <see cref="InputAction.started"/>, <see cref="InputAction.performed"/> and <see cref="InputAction.canceled"/> callbacks provided via <param cref="instance" /> on all input actions contained in this map.
+        /// </summary>
+        /// <param name="instance">Callback instance.</param>
+        /// <remarks>
+        /// If <paramref name="instance" /> is <c>null</c> or <paramref name="instance"/> have already been added this method does nothing.
+        /// </remarks>
+        /// <seealso cref="PlayerTwoActions" />
+        public void AddCallbacks(IPlayerTwoActions instance)
+        {
+            if (instance == null || m_Wrapper.m_PlayerTwoActionsCallbackInterfaces.Contains(instance)) return;
+            m_Wrapper.m_PlayerTwoActionsCallbackInterfaces.Add(instance);
+            @Movement.started += instance.OnMovement;
+            @Movement.performed += instance.OnMovement;
+            @Movement.canceled += instance.OnMovement;
+        }
+
+        /// <summary>
+        /// Removes <see cref="InputAction.started"/>, <see cref="InputAction.performed"/> and <see cref="InputAction.canceled"/> callbacks provided via <param cref="instance" /> on all input actions contained in this map.
+        /// </summary>
+        /// <remarks>
+        /// Calling this method when <paramref name="instance" /> have not previously been registered has no side-effects.
+        /// </remarks>
+        /// <seealso cref="PlayerTwoActions" />
+        private void UnregisterCallbacks(IPlayerTwoActions instance)
+        {
+            @Movement.started -= instance.OnMovement;
+            @Movement.performed -= instance.OnMovement;
+            @Movement.canceled -= instance.OnMovement;
+        }
+
+        /// <summary>
+        /// Unregisters <param cref="instance" /> and unregisters all input action callbacks via <see cref="PlayerTwoActions.UnregisterCallbacks(IPlayerTwoActions)" />.
+        /// </summary>
+        /// <seealso cref="PlayerTwoActions.UnregisterCallbacks(IPlayerTwoActions)" />
+        public void RemoveCallbacks(IPlayerTwoActions instance)
+        {
+            if (m_Wrapper.m_PlayerTwoActionsCallbackInterfaces.Remove(instance))
+                UnregisterCallbacks(instance);
+        }
+
+        /// <summary>
+        /// Replaces all existing callback instances and previously registered input action callbacks associated with them with callbacks provided via <param cref="instance" />.
+        /// </summary>
+        /// <remarks>
+        /// If <paramref name="instance" /> is <c>null</c>, calling this method will only unregister all existing callbacks but not register any new callbacks.
+        /// </remarks>
+        /// <seealso cref="PlayerTwoActions.AddCallbacks(IPlayerTwoActions)" />
+        /// <seealso cref="PlayerTwoActions.RemoveCallbacks(IPlayerTwoActions)" />
+        /// <seealso cref="PlayerTwoActions.UnregisterCallbacks(IPlayerTwoActions)" />
+        public void SetCallbacks(IPlayerTwoActions instance)
+        {
+            foreach (var item in m_Wrapper.m_PlayerTwoActionsCallbackInterfaces)
+                UnregisterCallbacks(item);
+            m_Wrapper.m_PlayerTwoActionsCallbackInterfaces.Clear();
+            AddCallbacks(instance);
+        }
+    }
+    /// <summary>
+    /// Provides a new <see cref="PlayerTwoActions" /> instance referencing this action map.
+    /// </summary>
+    public PlayerTwoActions @PlayerTwo => new PlayerTwoActions(this);
     /// <summary>
     /// Interface to implement callback methods for all input action callbacks associated with input actions defined by "Shmovement" which allows adding and removing callbacks.
     /// </summary>
@@ -663,5 +836,20 @@ public partial class @BenStiller: IInputActionCollection2, IDisposable
         /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
         /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
         void OnClick(InputAction.CallbackContext context);
+    }
+    /// <summary>
+    /// Interface to implement callback methods for all input action callbacks associated with input actions defined by "PlayerTwo" which allows adding and removing callbacks.
+    /// </summary>
+    /// <seealso cref="PlayerTwoActions.AddCallbacks(IPlayerTwoActions)" />
+    /// <seealso cref="PlayerTwoActions.RemoveCallbacks(IPlayerTwoActions)" />
+    public interface IPlayerTwoActions
+    {
+        /// <summary>
+        /// Method invoked when associated input action "Movement" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnMovement(InputAction.CallbackContext context);
     }
 }
