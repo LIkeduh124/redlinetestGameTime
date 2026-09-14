@@ -10,6 +10,8 @@ public class WallMode : AttackMe
     private BenStiller benStiller;
     private float time;
     private bool checker;
+    private Vector2 og;
+    private Vector2 move;
 
     private void Awake()
     {
@@ -20,6 +22,7 @@ public class WallMode : AttackMe
         checker = false;
         time = 0.0f;
         spriteRenderer.enabled = false;
+        
     }
 
     private void OnEnable()
@@ -36,6 +39,8 @@ public class WallMode : AttackMe
     {
         Appear();
     }
+
+    
 
     private void Appear()
     {

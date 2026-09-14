@@ -103,6 +103,14 @@ public class NewMonoBehaviourScript : MonoBehaviour
         
     }
 
+    void OnTriggerEnter2D(Collider2D other)
+    {
+        if (!(other.CompareTag("PhillipeHitbox")))
+        {
+            stun = .5f;
+        }
+    }
+
     private void KnockBack()
     {
         rigidbody.MovePosition(rigidbody.position + reverse * speed * Time.fixedDeltaTime);
