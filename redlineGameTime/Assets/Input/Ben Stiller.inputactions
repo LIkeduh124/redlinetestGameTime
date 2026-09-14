@@ -15,16 +15,6 @@
                     "interactions": "",
                     "initialStateCheck": false,
                     "priority": 0
-                },
-                {
-                    "name": "Attack",
-                    "type": "PassThrough",
-                    "id": "06fe6ed1-16de-4964-9613-44799f1ce6ff",
-                    "expectedControlType": "Key",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false,
-                    "priority": 0
                 }
             ],
             "bindings": [
@@ -82,15 +72,84 @@
                     "action": "Left and Right",
                     "isComposite": false,
                     "isPartOfComposite": true
+                }
+            ]
+        },
+        {
+            "name": "Combat",
+            "id": "a2d5b22f-db24-4828-b653-bd27076c4372",
+            "actions": [
+                {
+                    "name": "Attack",
+                    "type": "Button",
+                    "id": "c1e9cca4-8ae7-4a58-a993-2c24e7cd363d",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false,
+                    "priority": 0
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "406673be-26c7-49ee-a453-b375f8aeafa0",
+                    "path": "<Keyboard>/j",
+                    "interactions": "SlowTap",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Attack",
+                    "isComposite": false,
+                    "isPartOfComposite": false
                 },
                 {
                     "name": "",
-                    "id": "1c4fe410-d0b6-4a29-bea6-0eeaabd70e3c",
+                    "id": "6e983648-493c-4861-910c-10a82b939f9d",
                     "path": "",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
                     "action": "Attack",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        },
+        {
+            "name": "PlayButton",
+            "id": "397900e7-5d45-4d1c-8f1c-a314f884b6ed",
+            "actions": [
+                {
+                    "name": "Click",
+                    "type": "Button",
+                    "id": "62332266-d1f6-41c6-8345-ee6e665b1424",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false,
+                    "priority": 0
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "6fb84a94-e52d-4bf8-8de4-4b170ae796a2",
+                    "path": "",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Click",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "606b3ca1-f971-40dc-9d47-e33e6add3dd2",
+                    "path": "<Mouse>/leftButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Click",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
