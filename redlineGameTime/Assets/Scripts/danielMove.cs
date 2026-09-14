@@ -6,7 +6,7 @@ public class danielMove : MonoBehaviour
     [SerializeField] private float speed = 5.0f;
 
     private BenStiller benStiller;
-    private Vector2 movement, reverse;
+    private Vector2 movement, reverse, knockBackDirection;
     //rigidBody2d
 
     private Rigidbody2D rigidbody;
@@ -24,6 +24,8 @@ public class danielMove : MonoBehaviour
         stun = 0.0f;
 
         reverse = -(movement);
+        
+
 
     }
 
@@ -73,7 +75,7 @@ public class danielMove : MonoBehaviour
         //Defines how we move based on the values in our input map
         movement = benStiller.PlayerTwo.Movement.ReadValue<Vector2>();
         //Shows our inputs in the console
-        reverse = -(movement);
+        
         //Debug.Log(movement);
     }
 
@@ -102,8 +104,16 @@ public class danielMove : MonoBehaviour
 
     }
 
+    void OnTriggerEnter2D(Collider2D other)
+    {
+        knockBackDirection =
+        ((Vector2)transform.position - (Vector2)other.transform.position).normalized;
+        stun = .5f;
+        
+    }
+
     private void KnockBack()
     {
-        rigidbody.MovePosition(rigidbody.position + reverse * speed * Time.fixedDeltaTime);
+        rigidbody.MovePosition(rigidbody.position + knockBackDirection * speed * Time.fixedDeltaTime);
     }
 }

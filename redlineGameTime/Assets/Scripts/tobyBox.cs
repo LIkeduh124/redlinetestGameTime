@@ -89,7 +89,8 @@ public class NewMonoBehaviourScript : MonoBehaviour
             Debug.Log(collision.gameObject.name);
 
         }
-        else if ((collision.gameObject.CompareTag("PhillipeHitbox")))
+        else if (((collision.gameObject.CompareTag("PhillipeHitbox"))) ||(collision.collider.isTrigger))
+            
         {
             Debug.Log(collision.gameObject.name);
         }
