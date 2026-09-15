@@ -5,12 +5,12 @@ public class CharacterBasic : MonoBehaviour
 {
     [SerializeField] float speed = 5.0f;
 
-    BenStiller benStiller;
-    Vector2 movement, reverse;
+    protected BenStiller benStiller;
+    protected Vector2 movement, reverse;
     //rigidBody2d
 
-    Rigidbody2D rigidbody;
-    PolygonCollider2D polygonCollider;
+    protected Rigidbody2D rigidbody;
+    protected PolygonCollider2D polygonCollider;
     public float stun;
 
 
@@ -55,7 +55,7 @@ public class CharacterBasic : MonoBehaviour
 
     }
 
-    public void PlayerInput()
+    public virtual void PlayerInput()
     {
         reverse = -movement;
     }
@@ -76,18 +76,7 @@ public class CharacterBasic : MonoBehaviour
         rigidbody.MovePosition(rigidbody.position + movement * speed * Time.fixedDeltaTime);
     }
 
-    public void OnCollisionEnter2D(Collision2D collision)
-    {
-        if ((((collision.gameObject.CompareTag("Floor")))))
-        {
-            Debug.Log(collision.gameObject.name);
-
-        }
-        else
-        {
-            stun = .5f;
-        }
-    }
+    
     public void KnockBack()
     {
         rigidbody.MovePosition(rigidbody.position + reverse * speed * Time.fixedDeltaTime);
