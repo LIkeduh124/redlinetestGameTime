@@ -7,6 +7,6 @@ public class danielMove : CharacterBasic
     BenStiller benStiller;
     Vector2 direction;
 
-    private void Player
+    
     
 }

@@ -1,7 +1,7 @@
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
-public class NewMonoBehaviourScript : MonoBehaviour
+public class tobyBox : CharacterBasic
 {
     [SerializeField] private float speed = 5.0f;
 
