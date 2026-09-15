@@ -4,7 +4,7 @@ using UnityEngine.InputSystem;
 public class CharacterBasic : MonoBehaviour
 {
     [SerializeField] float speed = 5.0f;
-
+    [SerializeField] float weight = 3.0f;
     protected BenStiller benStiller;
     protected Vector2 movement, reverse;
     //rigidBody2d
@@ -45,7 +45,7 @@ public class CharacterBasic : MonoBehaviour
         {
             PlayerInput();
             stun = 0.0f;
-            rigidbody.gravityScale = 1.0f;
+            rigidbody.gravityScale = weight;
         }
         else
         {

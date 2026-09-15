@@ -55,20 +55,8 @@ public class tobyBox : CharacterBasic
         
     }
 
-    private void FixedUpdate()
-    {
-        if (stun <= 0.0f)
-        {
-            Move(speed);
-        }
-        else
-        {
-            KnockBack();
-        }
-        
-    }
 
-    private void PlayerInput()
+    override void PlayerInput()
     {
         //Defines how we move based on the values in our input map
         movement = benStiller.Shmovement.LeftandRight.ReadValue<Vector2>();
