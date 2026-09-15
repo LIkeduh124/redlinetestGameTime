@@ -1,16 +1,27 @@
+using Unity.VisualScripting;
 using UnityEngine;
-
+using UnityEngine.UI;
 public class HealthManager : MonoBehaviour
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    //set variables for health and size. (height goes unchanged but is added to maintain its appearance.
+    public float Health, MaxHealth, Width, Height;
+    //serialized fields for rec transform
+    [SerializeField]
+    private RectTransform healthBar;
+
+    public void SetMaxHealth(float maxHealth)
     {
-        
+        //sets the health value to the MaxHealth
+        MaxHealth = maxHealth;
     }
 
-    // Update is called once per frame
-    void Update()
+    public void SetHealth(float health)
     {
-        
+        Health = health;
+
+        float newWidth = (Health / MaxHealth) * Width;
+
+        healthBar.sizeDelta = new Vector2(newWidth, Height);
+
     }
 }
