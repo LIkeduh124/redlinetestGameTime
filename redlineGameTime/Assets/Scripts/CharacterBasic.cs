@@ -9,6 +9,7 @@ public class CharacterBasic : MonoBehaviour
     protected Vector2 movement, reverse;
     //rigidBody2d
 
+    protected Transform transform;
     protected Rigidbody2D rigidbody;
     protected PolygonCollider2D polygonCollider;
     public float stun;
@@ -22,6 +23,7 @@ public class CharacterBasic : MonoBehaviour
         rigidbody = GetComponent<Rigidbody2D>();
         polygonCollider = GetComponent<PolygonCollider2D>();
         stun = 0.0f;
+        transform = GetComponent<Transform>();
 
         reverse = -(movement);
 

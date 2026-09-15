@@ -41,6 +41,7 @@ public class danielMove : CharacterBasic
         if (!(other.CompareTag("DanielHitbox")))
         {
             stun = .5f;
+            reverse = (other.GetComponent<Transform>().ReadValue<Vector2>() - transform.ReadValue<Vector2>());
         }
     }
 
