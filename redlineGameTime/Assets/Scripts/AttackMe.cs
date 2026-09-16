@@ -2,17 +2,19 @@ using UnityEngine;
 
 public class AttackMe : MonoBehaviour
 {
-    private Rigidbody2D rigidbody;
-    private CircleCollider2D polygonCollider;
-    private SpriteRenderer spriteRenderer;
-    private Transform joey;
+    protected Rigidbody2D rigidbody;
+    protected CircleCollider2D polygonCollider;
+    protected SpriteRenderer spriteRenderer;
+    protected Transform joey;
     [SerializeField] GameObject father;
-    private void Awake()
+    public Vector2 og, next, now;
+    protected void Awake()
     {
         
         polygonCollider = GetComponent<CircleCollider2D>();
         spriteRenderer = GetComponent<SpriteRenderer>();
         joey = GetComponent<Transform>();
+        og = GetComponent<Vector2>();
     }
 
    

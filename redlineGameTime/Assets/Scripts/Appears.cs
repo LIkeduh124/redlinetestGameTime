@@ -4,13 +4,20 @@ using UnityEngine.InputSystem;
 
 public class Appears : MonoBehaviour
 {
-    private BenStiller benStiller;
-    private Button toddHowad;
-    public SpriteRenderer spriteRenderer;
-    private float time;
-    private bool checker;
+    protected BenStiller benStiller;
+    protected Button toddHowad;
+    protected SpriteRenderer spriteRenderer;
+    protected float time;
+    protected bool checker;
+    protected Rigidbody2D rigidbody;
+    protected CircleCollider2D polygonCollider;
+   
+    protected Transform joey;
+    [SerializeField] GameObject father;
+    public Vector2 og, next, now;
 
-    private void Awake()
+
+    protected void Awake()
     {
         benStiller = new BenStiller();
         spriteRenderer = GetComponent<SpriteRenderer>();
@@ -19,17 +26,17 @@ public class Appears : MonoBehaviour
         time = 0.0f;
     }
 
-    private void OnEnable()
+    protected void OnEnable()
     {
         benStiller.Enable();
     }
 
-    private void OnDisable()
+    protected void OnDisable()
     {
         benStiller.Disable();
     }
 
-    private void Update()
+    protected void Update()
     {
         Appear();
         //CheckHeld();
@@ -37,7 +44,7 @@ public class Appears : MonoBehaviour
         
     }
 
-    private void Appear()
+    protected virtual void Appear()
     {
         /*
          * Toggleable
@@ -64,6 +71,7 @@ public class Appears : MonoBehaviour
         else if((time<=3.0)&&(time>0))
         {
             time -= Time.deltaTime;
+            
         }
         
     }

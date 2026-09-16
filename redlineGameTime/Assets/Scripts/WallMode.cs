@@ -1,6 +1,7 @@
+using Unity.VisualScripting;
 using UnityEngine;
 
-public class WallMode : AttackMe
+public class WallMode : Appears
 {
 
     private Rigidbody2D rigidbody;
@@ -22,7 +23,9 @@ public class WallMode : AttackMe
         checker = false;
         time = 0.0f;
         spriteRenderer.enabled = false;
-        
+        now = og;
+        next.x = now.x + 1;
+        next.y = now.y + 1;
     }
 
     private void OnEnable()
@@ -42,7 +45,7 @@ public class WallMode : AttackMe
 
     
 
-    private void Appear()
+    protected override void Appear()
     {
         /*
          * Toggleable
@@ -61,6 +64,7 @@ public class WallMode : AttackMe
             spriteRenderer.enabled = true;
             polygonCollider.enabled = true;
             time = 3.0f;
+            transform.position = og;
         }
         else if (time <= 0)
         {
@@ -71,7 +75,17 @@ public class WallMode : AttackMe
         else if ((time <= 3.0) && (time > 0))
         {
             time -= Time.deltaTime;
+            Move(5);
+            
         }
 
+    }
+
+    public void Move(float speed)
+    {
+        transform.position = ((next) * speed * Time.fixedDeltaTime);
+        now = next;
+        next.x += 1;
+        next.y += 1;
     }
 }
