@@ -26,7 +26,9 @@ public class Appears : MonoBehaviour
         time = 0.0f;
         og = transform.position;
         now = og;
-        
+        rigidbody = GetComponent<RigidBody2D>();
+        rigidbody.gravityScale = 0.0f;
+
     }
 
     protected virtual void OnEnable()
@@ -39,7 +41,7 @@ public class Appears : MonoBehaviour
         benStiller.Disable();
     }
 
-    protected void Update()
+    protected virtual void Update()
     {
         Appear();
         //CheckHeld();
