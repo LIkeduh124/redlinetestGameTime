@@ -3,6 +3,17 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 public class NewMonoBehaviourScript : MonoBehaviour
 {
+    //create variables to set health and max health
+    public float Health, MaxHealth;
+
+    [SerializeField]
+    private HealthBarUI healthBar;
+
+    void Start()
+    {
+        healthBar.SetMaxHealth(MaxHealth);  
+    }
+
     [SerializeField] private float speed = 5.0f;
 
     private BenStiller benStiller;
