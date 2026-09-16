@@ -14,19 +14,22 @@ public class Appears : MonoBehaviour
    
     protected Transform joey;
     [SerializeField] GameObject father;
-    public Vector2 og, next, now;
+    protected Vector2 og, next, now;
 
 
-    protected void Awake()
+    protected virtual void Awake()
     {
         benStiller = new BenStiller();
         spriteRenderer = GetComponent<SpriteRenderer>();
         toddHowad = GetComponent<Button>();
         checker = false;
         time = 0.0f;
+        og = transform.position;
+        now = og;
+        
     }
 
-    protected void OnEnable()
+    protected virtual void OnEnable()
     {
         benStiller.Enable();
     }

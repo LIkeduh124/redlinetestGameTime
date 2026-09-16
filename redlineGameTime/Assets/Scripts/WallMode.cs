@@ -11,11 +11,12 @@ public class WallMode : Appears
     private BenStiller benStiller;
     private float time;
     private bool checker;
-    private Vector2 og;
-    private Vector2 move;
+    
+    
 
     private void Awake()
     {
+        base.Awake();
         polygonCollider = GetComponent<BoxCollider2D>();
         polygonCollider.enabled = false;
         benStiller = new BenStiller();
@@ -23,15 +24,10 @@ public class WallMode : Appears
         checker = false;
         time = 0.0f;
         spriteRenderer.enabled = false;
-        now = og;
-        next.x = now.x + 1;
-        next.y = now.y + 1;
+        
     }
 
-    private void OnEnable()
-    {
-        benStiller.Enable();
-    }
+    
 
     private void OnDisable()
     {
@@ -59,23 +55,28 @@ public class WallMode : Appears
         }
         */
 
-        if ((time == 0) && (benStiller.Combat.Attack.IsPressed()))
+        if ((time == 0) && (base.benStiller.Combat.Attack.IsPressed()))
         {
+            
+            
+            
             spriteRenderer.enabled = true;
             polygonCollider.enabled = true;
             time = 3.0f;
-            transform.position = og;
+            
         }
         else if (time <= 0)
         {
+            
             spriteRenderer.enabled = false;
             polygonCollider.enabled = false;
             time = 0.0f;
+            transform.position = og;
         }
         else if ((time <= 3.0) && (time > 0))
         {
             time -= Time.deltaTime;
-            Move(5);
+            Move(5f);
             
         }
 
@@ -83,9 +84,7 @@ public class WallMode : Appears
 
     public void Move(float speed)
     {
-        transform.position = ((next) * speed * Time.fixedDeltaTime);
-        now = next;
-        next.x += 1;
-        next.y += 1;
+        rigidbody.MovePosition(rigidbody.position + Vector2.right * speed * Time.fixedDeltaTime);
+        
     }
 }
