@@ -71,7 +71,7 @@ public class WallMode : Appears
             spriteRenderer.enabled = false;
             polygonCollider.enabled = false;
             time = 0.0f;
-            transform.position = og;
+            rigidbody.position = og;
         }
         else if ((time <= 3.0) && (time > 0))
         {
