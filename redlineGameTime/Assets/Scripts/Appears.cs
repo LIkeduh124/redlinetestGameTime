@@ -14,7 +14,8 @@ public class Appears : MonoBehaviour
    
     protected Transform joey;
     [SerializeField] GameObject father;
-    protected Vector2 og, next, now;
+    protected GameObject allFather;
+    protected Vector2 dad, son, distance;
 
 
     protected virtual void Awake()
@@ -24,10 +25,13 @@ public class Appears : MonoBehaviour
         toddHowad = GetComponent<Button>();
         checker = false;
         time = 0.0f;
-        og = transform.position;
-        now = og;
-        rigidbody = GetComponent<RigidBody2D>();
+        
+        rigidbody = GetComponent<Rigidbody2D>();
         rigidbody.gravityScale = 0.0f;
+        allFather = father;
+        dad = father.GetComponent<Transform>().position;
+        son = GetComponent<Transform>().position;
+        distance = dad - son;
 
     }
 

@@ -4,11 +4,11 @@ using UnityEngine;
 public class WallMode : Appears
 {
 
-    private Rigidbody2D rigidbody;
+    
     private BoxCollider2D polygonCollider;
     private SpriteRenderer spriteRenderer;
     private Transform joey;
-    private BenStiller benStiller;
+    
     private float time;
     private bool checker;
     
@@ -34,9 +34,13 @@ public class WallMode : Appears
         benStiller.Disable();
     }
 
-    private void Update()
+    protected override void Update()
     {
+        
         Appear();
+        dad = this.allFather.GetComponent<Transform>().position;
+
+
     }
 
     
@@ -57,12 +61,12 @@ public class WallMode : Appears
 
         if ((time == 0) && (base.benStiller.Combat.Attack.IsPressed()))
         {
-            
-            
-            
+
+
+            Debug.Log(base.benStiller.Combat.Attack.IsPressed());
             spriteRenderer.enabled = true;
             polygonCollider.enabled = true;
-            time = 3.0f;
+            time = 1.0f;
             
         }
         else if (time <= 0)
@@ -71,9 +75,10 @@ public class WallMode : Appears
             spriteRenderer.enabled = false;
             polygonCollider.enabled = false;
             time = 0.0f;
-            rigidbody.position = og;
+            transform.position = dad - distance;
+            
         }
-        else if ((time <= 3.0) && (time > 0))
+        else if ((time <= 1.0) && (time > 0))
         {
             time -= Time.deltaTime;
             Move(5f);
