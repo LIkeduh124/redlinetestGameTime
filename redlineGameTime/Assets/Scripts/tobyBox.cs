@@ -48,7 +48,14 @@ public class tobyBox : CharacterBasic
         
     }
 
-    
+    void OnTriggerEnter2D(Collider2D other)
+    {
+        if (!(other.CompareTag("PhillipeHitbox")))
+        {
+            stun = .5f;
+            reverse = (transform.position - other.transform.position);
+        }
+    }
 
-    
+
 }
