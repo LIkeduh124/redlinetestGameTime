@@ -4,6 +4,7 @@ using UnityEngine.InputSystem;
 public class CharacterBasic : MonoBehaviour
 {
     [SerializeField] float speed = 5.0f;
+    protected float allSpeed;
     [SerializeField] float weight = 3.0f;
     protected BenStiller benStiller;
     protected Vector2 movement, reverse;
@@ -24,7 +25,7 @@ public class CharacterBasic : MonoBehaviour
         polygonCollider = GetComponent<PolygonCollider2D>();
         stun = 0.0f;
         transform = GetComponent<Transform>();
-
+        allSpeed = speed;
         reverse = -(movement);
 
     }
