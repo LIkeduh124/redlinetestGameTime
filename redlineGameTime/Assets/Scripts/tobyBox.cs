@@ -7,14 +7,23 @@ public class NewMonoBehaviourScript : MonoBehaviour
     public float Health, MaxHealth;
 
     [SerializeField]
-    private HealthBarUI healthBar;
+    private HealthManager healthBar;
 
     void Start()
     {
-        healthBar.SetMaxHealth(MaxHealth);  
+        healthBar.SetMaxHealth(MaxHealth);
+    }
+    
+    public void setHealth(float healthChange)
+    {
+        //changes the health into the amount thats changed
+        Health += healthChange;
+        Health = Mathf.Clamp(Health, 0, MaxHealth);
+
+        healthBar.SetHealth(Health);
     }
 
-    [SerializeField] private float speed = 5.0f;
+    private float speed = 5.0f;
 
     private BenStiller benStiller;
     private Vector2 movement, reverse;
@@ -63,7 +72,17 @@ public class NewMonoBehaviourScript : MonoBehaviour
             //Debug.Log(stun);
             
         }
-        
+        if (Input.GetKeyDown("d"))
+        {
+            setHealth(-20f);
+            Debug.Log("Player1 took Damage!");
+        }
+        if (Input.GetKeyDown("f"))
+        {
+            setHealth(20f);
+            Debug.Log("Player1 Healed!");
+        }
+
     }
 
     private void FixedUpdate()
