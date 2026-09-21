@@ -14,7 +14,7 @@ public class AttackMe : MonoBehaviour
         polygonCollider = GetComponent<CircleCollider2D>();
         spriteRenderer = GetComponent<SpriteRenderer>();
         joey = GetComponent<Transform>();
-        og = GetComponent<Vector2>();
+        og = joey.position;
     }
 
    

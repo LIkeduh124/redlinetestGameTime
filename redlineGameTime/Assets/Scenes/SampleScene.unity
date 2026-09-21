@@ -569,7 +569,7 @@ GameObject:
   - component: {fileID: 552824127}
   - component: {fileID: 552824128}
   m_Layer: 0
-  m_Name: Phillipe
+  m_Name: AbeLincoln
   m_TagString: Character
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -931,7 +931,7 @@ GameObject:
   - component: {fileID: 1228756931}
   - component: {fileID: 1228756936}
   m_Layer: 0
-  m_Name: Daniel
+  m_Name: DanielBoone
   m_TagString: Character
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1314,8 +1314,8 @@ GameObject:
   - component: {fileID: 1372462078}
   - component: {fileID: 1372462076}
   m_Layer: 0
-  m_Name: PhillipeHitbox
-  m_TagString: PhillipeHitbox
+  m_Name: AbeHitbox
+  m_TagString: AbeHitbox
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1461,8 +1461,8 @@ GameObject:
   - component: {fileID: 1684457721}
   - component: {fileID: 1684457724}
   m_Layer: 0
-  m_Name: PhillipeWall
-  m_TagString: PhillipeHitbox
+  m_Name: AbeWall
+  m_TagString: AbeHitbox
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

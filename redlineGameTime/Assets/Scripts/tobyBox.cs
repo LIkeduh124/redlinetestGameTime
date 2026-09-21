@@ -34,7 +34,7 @@ public class tobyBox : CharacterBasic
             Debug.Log(collision.gameObject.name);
 
         }
-        else if (((collision.gameObject.CompareTag("PhillipeHitbox"))) ||(collision.collider.isTrigger))
+        else if (((collision.gameObject.CompareTag("AbeHitbox"))) ||(collision.collider.isTrigger))
             
         {
             Debug.Log(collision.gameObject.name);
@@ -50,7 +50,7 @@ public class tobyBox : CharacterBasic
 
     void OnTriggerEnter2D(Collider2D other)
     {
-        if (!(other.CompareTag("PhillipeHitbox")))
+        if (!(other.CompareTag("AbeHitbox")))
         {
             stun = .5f;
             reverse = (transform.position - other.transform.position);

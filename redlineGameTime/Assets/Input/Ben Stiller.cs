@@ -180,7 +180,7 @@ public partial class @BenStiller: IInputActionCollection2, IDisposable
                 {
                     ""name"": """",
                     ""id"": ""406673be-26c7-49ee-a453-b375f8aeafa0"",
-                    ""path"": ""<Keyboard>/j"",
+                    ""path"": ""<Keyboard>/e"",
                     ""interactions"": ""SlowTap"",
                     ""processors"": """",
                     ""groups"": """",
@@ -281,7 +281,7 @@ public partial class @BenStiller: IInputActionCollection2, IDisposable
                 {
                     ""name"": ""up"",
                     ""id"": ""a1e13959-d412-4816-b642-3cea9144c556"",
-                    ""path"": ""<Keyboard>/w"",
+                    ""path"": ""<Keyboard>/u"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
@@ -292,7 +292,7 @@ public partial class @BenStiller: IInputActionCollection2, IDisposable
                 {
                     ""name"": ""down"",
                     ""id"": ""5074abea-385c-4e77-95cf-96016d2578b1"",
-                    ""path"": ""<Keyboard>/s"",
+                    ""path"": ""<Keyboard>/j"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
@@ -303,7 +303,7 @@ public partial class @BenStiller: IInputActionCollection2, IDisposable
                 {
                     ""name"": ""left"",
                     ""id"": ""2cd07e1a-d7db-4abd-b279-8d9a53b539ea"",
-                    ""path"": ""<Keyboard>/l"",
+                    ""path"": ""<Keyboard>/h"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
@@ -314,7 +314,7 @@ public partial class @BenStiller: IInputActionCollection2, IDisposable
                 {
                     ""name"": ""right"",
                     ""id"": ""8aa08bb3-99a9-4b7c-b405-797dc2214934"",
-                    ""path"": ""<Keyboard>/r"",
+                    ""path"": ""<Keyboard>/k"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",

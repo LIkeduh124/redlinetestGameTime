@@ -4,34 +4,11 @@ public class BackWall : Appears
 {
 
 
-    private BoxCollider2D polygonCollider;
-    private SpriteRenderer spriteRenderer;
-    private Transform joey;
-
-    private float time;
-    private bool checker;
+    
 
 
 
-    private void Awake()
-    {
-        base.Awake();
-        polygonCollider = GetComponent<BoxCollider2D>();
-        polygonCollider.enabled = false;
-        benStiller = new BenStiller();
-        spriteRenderer = GetComponent<SpriteRenderer>();
-        checker = false;
-        time = 0.0f;
-        spriteRenderer.enabled = false;
-
-    }
-
-
-
-    private void OnDisable()
-    {
-        benStiller.Disable();
-    }
+    
 
     protected override void Update()
     {
