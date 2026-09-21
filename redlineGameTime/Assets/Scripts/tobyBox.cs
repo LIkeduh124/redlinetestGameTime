@@ -1,3 +1,4 @@
+using System.Numerics;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -21,6 +22,15 @@ public class tobyBox : CharacterBasic
         //Defines how we move based on the values in our input map
         movement = base.benStiller.Shmovement.LeftandRight.ReadValue<Vector2>();
         //Shows our inputs in the console
+        if(movement == Vector2.Left)
+        {
+            block = true;
+        }
+        else
+        {
+            block = false;
+        }
+
         reverse = -(movement);
         
     }
