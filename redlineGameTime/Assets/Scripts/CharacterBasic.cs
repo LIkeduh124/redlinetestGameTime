@@ -9,16 +9,19 @@ public class CharacterBasic : MonoBehaviour
     protected BenStiller benStiller;
     protected Vector2 movement, reverse;
     //rigidBody2d
-
+    protected bool yes, no, death;
     protected Transform transform;
     protected Rigidbody2D rigidbody;
     protected PolygonCollider2D polygonCollider;
     public float stun;
-
+   
 
     SpriteRenderer spriteRenderer;
     public void Awake()
     {
+        yes = true;
+        no = false;
+        death = no;
         benStiller = new BenStiller();
         spriteRenderer = GetComponent<SpriteRenderer>();
         rigidbody = GetComponent<Rigidbody2D>();

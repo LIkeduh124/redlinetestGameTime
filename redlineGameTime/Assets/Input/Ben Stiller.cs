@@ -254,6 +254,16 @@ public partial class @BenStiller: IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""initialStateCheck"": true,
                     ""priority"": 0
+                },
+                {
+                    ""name"": ""Hp"",
+                    ""type"": ""Button"",
+                    ""id"": ""bc5eb464-2012-4f1d-9170-14b85e9db701"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false,
+                    ""priority"": 0
                 }
             ],
             ""bindings"": [
@@ -311,6 +321,17 @@ public partial class @BenStiller: IInputActionCollection2, IDisposable
                     ""action"": ""Movement"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""223dfe86-40ec-448e-acbc-bda352291758"",
+                    ""path"": """",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Hp"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -329,6 +350,7 @@ public partial class @BenStiller: IInputActionCollection2, IDisposable
         // PlayerTwo
         m_PlayerTwo = asset.FindActionMap("PlayerTwo", throwIfNotFound: true);
         m_PlayerTwo_Movement = m_PlayerTwo.FindAction("Movement", throwIfNotFound: true);
+        m_PlayerTwo_Hp = m_PlayerTwo.FindAction("Hp", throwIfNotFound: true);
     }
 
     ~@BenStiller()
@@ -701,6 +723,7 @@ public partial class @BenStiller: IInputActionCollection2, IDisposable
     private readonly InputActionMap m_PlayerTwo;
     private List<IPlayerTwoActions> m_PlayerTwoActionsCallbackInterfaces = new List<IPlayerTwoActions>();
     private readonly InputAction m_PlayerTwo_Movement;
+    private readonly InputAction m_PlayerTwo_Hp;
     /// <summary>
     /// Provides access to input actions defined in input action map "PlayerTwo".
     /// </summary>
@@ -716,6 +739,10 @@ public partial class @BenStiller: IInputActionCollection2, IDisposable
         /// Provides access to the underlying input action "PlayerTwo/Movement".
         /// </summary>
         public InputAction @Movement => m_Wrapper.m_PlayerTwo_Movement;
+        /// <summary>
+        /// Provides access to the underlying input action "PlayerTwo/Hp".
+        /// </summary>
+        public InputAction @Hp => m_Wrapper.m_PlayerTwo_Hp;
         /// <summary>
         /// Provides access to the underlying input action map instance.
         /// </summary>
@@ -745,6 +772,9 @@ public partial class @BenStiller: IInputActionCollection2, IDisposable
             @Movement.started += instance.OnMovement;
             @Movement.performed += instance.OnMovement;
             @Movement.canceled += instance.OnMovement;
+            @Hp.started += instance.OnHp;
+            @Hp.performed += instance.OnHp;
+            @Hp.canceled += instance.OnHp;
         }
 
         /// <summary>
@@ -759,6 +789,9 @@ public partial class @BenStiller: IInputActionCollection2, IDisposable
             @Movement.started -= instance.OnMovement;
             @Movement.performed -= instance.OnMovement;
             @Movement.canceled -= instance.OnMovement;
+            @Hp.started -= instance.OnHp;
+            @Hp.performed -= instance.OnHp;
+            @Hp.canceled -= instance.OnHp;
         }
 
         /// <summary>
@@ -851,5 +884,12 @@ public partial class @BenStiller: IInputActionCollection2, IDisposable
         /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
         /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
         void OnMovement(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "Hp" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnHp(InputAction.CallbackContext context);
     }
 }
