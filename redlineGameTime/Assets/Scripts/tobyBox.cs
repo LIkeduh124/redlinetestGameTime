@@ -24,7 +24,7 @@ public class NewMonoBehaviourScript : MonoBehaviour
     }
 
     private float speed = 5.0f;
-
+    private InputAction action;
     private BenStiller benStiller;
     private Vector2 movement, reverse;
     //rigidBody2d
@@ -37,7 +37,11 @@ public class NewMonoBehaviourScript : MonoBehaviour
     private SpriteRenderer spriteRenderer;
     private void Awake()
     {
+        
         benStiller = new BenStiller();
+
+        //Assigns the action variable to the lower health bindings
+        action = benStiller.HPTest.LowerHealth;
         spriteRenderer = GetComponent<SpriteRenderer>();
         rigidbody = GetComponent<Rigidbody2D>();
         polygonCollider = GetComponent<PolygonCollider2D>();
@@ -49,7 +53,8 @@ public class NewMonoBehaviourScript : MonoBehaviour
 
     private void OnEnable()
     {
-        benStiller.Enable();
+        benStiller.Enable(); 
+        action.performed += OnPress;
     }
 
     private void OnDisable()
@@ -72,7 +77,8 @@ public class NewMonoBehaviourScript : MonoBehaviour
             //Debug.Log(stun);
             
         }
-        if (Input.GetKeyDown("d"))
+        /*
+        if (action.performed() == true)
         {
             setHealth(-20f);
             Debug.Log("Player1 took Damage!");
@@ -82,7 +88,7 @@ public class NewMonoBehaviourScript : MonoBehaviour
             setHealth(20f);
             Debug.Log("Player1 Healed!");
         }
-
+        */
     }
 
     private void FixedUpdate()
@@ -132,6 +138,11 @@ public class NewMonoBehaviourScript : MonoBehaviour
         
     }
 
+    private void OnPress(InputAction.CallbackContext callbackContext)
+    {
+        Debug.Log("duuuude");
+        setHealth(-20);
+    }
     private void KnockBack()
     {
         rigidbody.MovePosition(rigidbody.position + reverse * speed * Time.fixedDeltaTime);

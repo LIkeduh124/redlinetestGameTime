@@ -154,6 +154,78 @@
                     "isPartOfComposite": false
                 }
             ]
+        },
+        {
+            "name": "HPTest",
+            "id": "10713825-3da4-4f4a-b817-f7fd19b0d26d",
+            "actions": [
+                {
+                    "name": "LowerHealth",
+                    "type": "Button",
+                    "id": "6bfa76c5-fe5a-4f3a-ae16-d018ed4a0988",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false,
+                    "priority": 0
+                },
+                {
+                    "name": "AddHealth",
+                    "type": "Button",
+                    "id": "fe11d8a2-d8bc-4981-b0c1-bf144ad2e433",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false,
+                    "priority": 0
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "f2443f5b-aad4-4500-9bfb-7e4916ce8d8b",
+                    "path": "",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "LowerHealth",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "66f3fe54-d889-4cae-b07e-19afb6eeda12",
+                    "path": "<Keyboard>/j",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "LowerHealth",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "fa6b0449-d600-45f5-9e94-efb3c8508100",
+                    "path": "",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "AddHealth",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "0ad97bc4-61be-4405-8459-749226e00042",
+                    "path": "<Keyboard>/k",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "AddHealth",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
         }
     ],
     "controlSchemes": []

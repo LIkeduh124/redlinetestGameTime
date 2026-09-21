@@ -240,6 +240,78 @@ public partial class @BenStiller: IInputActionCollection2, IDisposable
                     ""isPartOfComposite"": false
                 }
             ]
+        },
+        {
+            ""name"": ""HPTest"",
+            ""id"": ""10713825-3da4-4f4a-b817-f7fd19b0d26d"",
+            ""actions"": [
+                {
+                    ""name"": ""LowerHealth"",
+                    ""type"": ""Button"",
+                    ""id"": ""6bfa76c5-fe5a-4f3a-ae16-d018ed4a0988"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false,
+                    ""priority"": 0
+                },
+                {
+                    ""name"": ""AddHealth"",
+                    ""type"": ""Button"",
+                    ""id"": ""fe11d8a2-d8bc-4981-b0c1-bf144ad2e433"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false,
+                    ""priority"": 0
+                }
+            ],
+            ""bindings"": [
+                {
+                    ""name"": """",
+                    ""id"": ""f2443f5b-aad4-4500-9bfb-7e4916ce8d8b"",
+                    ""path"": """",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""LowerHealth"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""66f3fe54-d889-4cae-b07e-19afb6eeda12"",
+                    ""path"": ""<Keyboard>/j"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""LowerHealth"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""fa6b0449-d600-45f5-9e94-efb3c8508100"",
+                    ""path"": """",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""AddHealth"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""0ad97bc4-61be-4405-8459-749226e00042"",
+                    ""path"": ""<Keyboard>/k"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""AddHealth"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                }
+            ]
         }
     ],
     ""controlSchemes"": []
@@ -253,6 +325,10 @@ public partial class @BenStiller: IInputActionCollection2, IDisposable
         // PlayButton
         m_PlayButton = asset.FindActionMap("PlayButton", throwIfNotFound: true);
         m_PlayButton_Click = m_PlayButton.FindAction("Click", throwIfNotFound: true);
+        // HPTest
+        m_HPTest = asset.FindActionMap("HPTest", throwIfNotFound: true);
+        m_HPTest_LowerHealth = m_HPTest.FindAction("LowerHealth", throwIfNotFound: true);
+        m_HPTest_AddHealth = m_HPTest.FindAction("AddHealth", throwIfNotFound: true);
     }
 
     ~@BenStiller()
@@ -260,6 +336,7 @@ public partial class @BenStiller: IInputActionCollection2, IDisposable
         UnityEngine.Debug.Assert(!m_Shmovement.enabled, "This will cause a leak and performance issues, BenStiller.Shmovement.Disable() has not been called.");
         UnityEngine.Debug.Assert(!m_Combat.enabled, "This will cause a leak and performance issues, BenStiller.Combat.Disable() has not been called.");
         UnityEngine.Debug.Assert(!m_PlayButton.enabled, "This will cause a leak and performance issues, BenStiller.PlayButton.Disable() has not been called.");
+        UnityEngine.Debug.Assert(!m_HPTest.enabled, "This will cause a leak and performance issues, BenStiller.HPTest.Disable() has not been called.");
     }
 
     /// <summary>
@@ -619,6 +696,113 @@ public partial class @BenStiller: IInputActionCollection2, IDisposable
     /// Provides a new <see cref="PlayButtonActions" /> instance referencing this action map.
     /// </summary>
     public PlayButtonActions @PlayButton => new PlayButtonActions(this);
+
+    // HPTest
+    private readonly InputActionMap m_HPTest;
+    private List<IHPTestActions> m_HPTestActionsCallbackInterfaces = new List<IHPTestActions>();
+    private readonly InputAction m_HPTest_LowerHealth;
+    private readonly InputAction m_HPTest_AddHealth;
+    /// <summary>
+    /// Provides access to input actions defined in input action map "HPTest".
+    /// </summary>
+    public struct HPTestActions
+    {
+        private @BenStiller m_Wrapper;
+
+        /// <summary>
+        /// Construct a new instance of the input action map wrapper class.
+        /// </summary>
+        public HPTestActions(@BenStiller wrapper) { m_Wrapper = wrapper; }
+        /// <summary>
+        /// Provides access to the underlying input action "HPTest/LowerHealth".
+        /// </summary>
+        public InputAction @LowerHealth => m_Wrapper.m_HPTest_LowerHealth;
+        /// <summary>
+        /// Provides access to the underlying input action "HPTest/AddHealth".
+        /// </summary>
+        public InputAction @AddHealth => m_Wrapper.m_HPTest_AddHealth;
+        /// <summary>
+        /// Provides access to the underlying input action map instance.
+        /// </summary>
+        public InputActionMap Get() { return m_Wrapper.m_HPTest; }
+        /// <inheritdoc cref="UnityEngine.InputSystem.InputActionMap.Enable()" />
+        public void Enable() { Get().Enable(); }
+        /// <inheritdoc cref="UnityEngine.InputSystem.InputActionMap.Disable()" />
+        public void Disable() { Get().Disable(); }
+        /// <inheritdoc cref="UnityEngine.InputSystem.InputActionMap.enabled" />
+        public bool enabled => Get().enabled;
+        /// <summary>
+        /// Implicitly converts an <see ref="HPTestActions" /> to an <see ref="InputActionMap" /> instance.
+        /// </summary>
+        public static implicit operator InputActionMap(HPTestActions set) { return set.Get(); }
+        /// <summary>
+        /// Adds <see cref="InputAction.started"/>, <see cref="InputAction.performed"/> and <see cref="InputAction.canceled"/> callbacks provided via <param cref="instance" /> on all input actions contained in this map.
+        /// </summary>
+        /// <param name="instance">Callback instance.</param>
+        /// <remarks>
+        /// If <paramref name="instance" /> is <c>null</c> or <paramref name="instance"/> have already been added this method does nothing.
+        /// </remarks>
+        /// <seealso cref="HPTestActions" />
+        public void AddCallbacks(IHPTestActions instance)
+        {
+            if (instance == null || m_Wrapper.m_HPTestActionsCallbackInterfaces.Contains(instance)) return;
+            m_Wrapper.m_HPTestActionsCallbackInterfaces.Add(instance);
+            @LowerHealth.started += instance.OnLowerHealth;
+            @LowerHealth.performed += instance.OnLowerHealth;
+            @LowerHealth.canceled += instance.OnLowerHealth;
+            @AddHealth.started += instance.OnAddHealth;
+            @AddHealth.performed += instance.OnAddHealth;
+            @AddHealth.canceled += instance.OnAddHealth;
+        }
+
+        /// <summary>
+        /// Removes <see cref="InputAction.started"/>, <see cref="InputAction.performed"/> and <see cref="InputAction.canceled"/> callbacks provided via <param cref="instance" /> on all input actions contained in this map.
+        /// </summary>
+        /// <remarks>
+        /// Calling this method when <paramref name="instance" /> have not previously been registered has no side-effects.
+        /// </remarks>
+        /// <seealso cref="HPTestActions" />
+        private void UnregisterCallbacks(IHPTestActions instance)
+        {
+            @LowerHealth.started -= instance.OnLowerHealth;
+            @LowerHealth.performed -= instance.OnLowerHealth;
+            @LowerHealth.canceled -= instance.OnLowerHealth;
+            @AddHealth.started -= instance.OnAddHealth;
+            @AddHealth.performed -= instance.OnAddHealth;
+            @AddHealth.canceled -= instance.OnAddHealth;
+        }
+
+        /// <summary>
+        /// Unregisters <param cref="instance" /> and unregisters all input action callbacks via <see cref="HPTestActions.UnregisterCallbacks(IHPTestActions)" />.
+        /// </summary>
+        /// <seealso cref="HPTestActions.UnregisterCallbacks(IHPTestActions)" />
+        public void RemoveCallbacks(IHPTestActions instance)
+        {
+            if (m_Wrapper.m_HPTestActionsCallbackInterfaces.Remove(instance))
+                UnregisterCallbacks(instance);
+        }
+
+        /// <summary>
+        /// Replaces all existing callback instances and previously registered input action callbacks associated with them with callbacks provided via <param cref="instance" />.
+        /// </summary>
+        /// <remarks>
+        /// If <paramref name="instance" /> is <c>null</c>, calling this method will only unregister all existing callbacks but not register any new callbacks.
+        /// </remarks>
+        /// <seealso cref="HPTestActions.AddCallbacks(IHPTestActions)" />
+        /// <seealso cref="HPTestActions.RemoveCallbacks(IHPTestActions)" />
+        /// <seealso cref="HPTestActions.UnregisterCallbacks(IHPTestActions)" />
+        public void SetCallbacks(IHPTestActions instance)
+        {
+            foreach (var item in m_Wrapper.m_HPTestActionsCallbackInterfaces)
+                UnregisterCallbacks(item);
+            m_Wrapper.m_HPTestActionsCallbackInterfaces.Clear();
+            AddCallbacks(instance);
+        }
+    }
+    /// <summary>
+    /// Provides a new <see cref="HPTestActions" /> instance referencing this action map.
+    /// </summary>
+    public HPTestActions @HPTest => new HPTestActions(this);
     /// <summary>
     /// Interface to implement callback methods for all input action callbacks associated with input actions defined by "Shmovement" which allows adding and removing callbacks.
     /// </summary>
@@ -663,5 +847,27 @@ public partial class @BenStiller: IInputActionCollection2, IDisposable
         /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
         /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
         void OnClick(InputAction.CallbackContext context);
+    }
+    /// <summary>
+    /// Interface to implement callback methods for all input action callbacks associated with input actions defined by "HPTest" which allows adding and removing callbacks.
+    /// </summary>
+    /// <seealso cref="HPTestActions.AddCallbacks(IHPTestActions)" />
+    /// <seealso cref="HPTestActions.RemoveCallbacks(IHPTestActions)" />
+    public interface IHPTestActions
+    {
+        /// <summary>
+        /// Method invoked when associated input action "LowerHealth" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnLowerHealth(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "AddHealth" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnAddHealth(InputAction.CallbackContext context);
     }
 }
