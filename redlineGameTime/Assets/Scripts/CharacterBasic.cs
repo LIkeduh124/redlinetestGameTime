@@ -15,6 +15,7 @@ public class CharacterBasic : MonoBehaviour
     protected PolygonCollider2D polygonCollider;
     public float stun;
     
+    
    
 
     SpriteRenderer spriteRenderer;
@@ -32,6 +33,7 @@ public class CharacterBasic : MonoBehaviour
         transform = GetComponent<Transform>();
         allSpeed = speed;
         reverse = -(movement);
+        
         
 
     }
