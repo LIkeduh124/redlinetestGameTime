@@ -20,9 +20,9 @@ public class tobyBox : CharacterBasic
     public override void PlayerInput()
     {
         //Defines how we move based on the values in our input map
-        movement = base.benStiller.Shmovement.LeftandRight.ReadValue<Vector2>();
+        movement = base.benStiller.Shmovement.LeftandRight.ReadValue<UnityEngine.Vector2>();
         //Shows our inputs in the console
-        if(movement == Vector2.Left)
+        if(movement == UnityEngine.Vector2.left)
         {
             block = true;
         }

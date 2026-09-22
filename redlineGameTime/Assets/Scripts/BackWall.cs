@@ -1,21 +1,25 @@
+using System.Threading;
+using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.InputSystem.XR;
 
 public class BackWall : Appears
 {
 
 
+
+    private danielMove cobyBox;
+    bool block, pressed;
     
-
-
-
     
 
     protected override void Update()
     {
-
+        cobyBox = GetComponentInParent<danielMove>();
         Appear();
         dad = this.allFather.GetComponent<Transform>().position;
 
+        block = cobyBox.block;
 
     }
 
@@ -35,14 +39,16 @@ public class BackWall : Appears
         }
         */
 
-        if ((time == 0) && (base.benStiller.Combat.Attack.IsPressed()))
+        if (((time == 0) && (base.benStiller.Combat.Attarck.IsPressed()))&&pressed == false)
         {
 
 
-            Debug.Log(base.benStiller.Combat.Attack.IsPressed());
+            Debug.Log(base.benStiller.Combat.Attarck.IsPressed());
             spriteRenderer.enabled = true;
             polygonCollider.enabled = true;
             time = 1.0f;
+            pressed = true;
+            
 
         }
         else if (time <= 0)
@@ -52,6 +58,7 @@ public class BackWall : Appears
             polygonCollider.enabled = false;
             time = 0.0f;
             transform.position = dad - distance;
+            pressed = false;
 
         }
         else if ((time <= 1.0) && (time > 0))
@@ -69,5 +76,18 @@ public class BackWall : Appears
 
     }
 
+    void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.gameObject.name.Equals("AbeLincoln"))
+        {
+            Debug.Log(other.gameObject.name);
+            if(other.gameObject.GetComponent<tobyBox>().block == true)
+            {
+                time = 0.0f;
+            }
+        }
+    }
+
+    
 
 }

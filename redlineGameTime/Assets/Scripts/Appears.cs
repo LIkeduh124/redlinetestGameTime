@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.InputSystem;
+using System.Diagnostics;
 
 public class Appears : MonoBehaviour
 {
@@ -10,7 +11,8 @@ public class Appears : MonoBehaviour
     protected float time;
     protected bool checker;
     protected Rigidbody2D rigidbody;
-    protected CircleCollider2D polygonCollider;
+    protected CircleCollider2D circleCollider;
+    protected BoxCollider2D polygonCollider;
    
     protected Transform joey;
     [SerializeField] GameObject father;
@@ -25,7 +27,7 @@ public class Appears : MonoBehaviour
         toddHowad = GetComponent<Button>();
         checker = false;
         time = 0.0f;
-        
+        polygonCollider = GetComponent<BoxCollider2D>();
         rigidbody = GetComponent<Rigidbody2D>();
         rigidbody.gravityScale = 0.0f;
         allFather = father;

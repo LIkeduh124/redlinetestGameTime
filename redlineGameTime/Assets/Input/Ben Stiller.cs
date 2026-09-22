@@ -174,6 +174,16 @@ public partial class @BenStiller: IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""initialStateCheck"": false,
                     ""priority"": 0
+                },
+                {
+                    ""name"": ""Attarck"",
+                    ""type"": ""Button"",
+                    ""id"": ""1080f34c-9fc0-4378-9d9e-699a58d2491d"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false,
+                    ""priority"": 0
                 }
             ],
             ""bindings"": [
@@ -196,6 +206,17 @@ public partial class @BenStiller: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""groups"": """",
                     ""action"": ""Attack"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""11298e23-f622-4e7e-a76a-d7c84089888b"",
+                    ""path"": ""<Keyboard>/q"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Attarck"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -344,6 +365,7 @@ public partial class @BenStiller: IInputActionCollection2, IDisposable
         // Combat
         m_Combat = asset.FindActionMap("Combat", throwIfNotFound: true);
         m_Combat_Attack = m_Combat.FindAction("Attack", throwIfNotFound: true);
+        m_Combat_Attarck = m_Combat.FindAction("Attarck", throwIfNotFound: true);
         // PlayButton
         m_PlayButton = asset.FindActionMap("PlayButton", throwIfNotFound: true);
         m_PlayButton_Click = m_PlayButton.FindAction("Click", throwIfNotFound: true);
@@ -531,6 +553,7 @@ public partial class @BenStiller: IInputActionCollection2, IDisposable
     private readonly InputActionMap m_Combat;
     private List<ICombatActions> m_CombatActionsCallbackInterfaces = new List<ICombatActions>();
     private readonly InputAction m_Combat_Attack;
+    private readonly InputAction m_Combat_Attarck;
     /// <summary>
     /// Provides access to input actions defined in input action map "Combat".
     /// </summary>
@@ -546,6 +569,10 @@ public partial class @BenStiller: IInputActionCollection2, IDisposable
         /// Provides access to the underlying input action "Combat/Attack".
         /// </summary>
         public InputAction @Attack => m_Wrapper.m_Combat_Attack;
+        /// <summary>
+        /// Provides access to the underlying input action "Combat/Attarck".
+        /// </summary>
+        public InputAction @Attarck => m_Wrapper.m_Combat_Attarck;
         /// <summary>
         /// Provides access to the underlying input action map instance.
         /// </summary>
@@ -575,6 +602,9 @@ public partial class @BenStiller: IInputActionCollection2, IDisposable
             @Attack.started += instance.OnAttack;
             @Attack.performed += instance.OnAttack;
             @Attack.canceled += instance.OnAttack;
+            @Attarck.started += instance.OnAttarck;
+            @Attarck.performed += instance.OnAttarck;
+            @Attarck.canceled += instance.OnAttarck;
         }
 
         /// <summary>
@@ -589,6 +619,9 @@ public partial class @BenStiller: IInputActionCollection2, IDisposable
             @Attack.started -= instance.OnAttack;
             @Attack.performed -= instance.OnAttack;
             @Attack.canceled -= instance.OnAttack;
+            @Attarck.started -= instance.OnAttarck;
+            @Attarck.performed -= instance.OnAttarck;
+            @Attarck.canceled -= instance.OnAttarck;
         }
 
         /// <summary>
@@ -854,6 +887,13 @@ public partial class @BenStiller: IInputActionCollection2, IDisposable
         /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
         /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
         void OnAttack(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "Attarck" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnAttarck(InputAction.CallbackContext context);
     }
     /// <summary>
     /// Interface to implement callback methods for all input action callbacks associated with input actions defined by "PlayButton" which allows adding and removing callbacks.

@@ -9,11 +9,12 @@ public class CharacterBasic : MonoBehaviour
     protected BenStiller benStiller;
     protected Vector2 movement, reverse;
     //rigidBody2d
-    protected bool yes, no, death, block;
+    public bool yes, no, death, block;
     protected Transform transform;
     protected Rigidbody2D rigidbody;
     protected PolygonCollider2D polygonCollider;
     public float stun;
+    
    
 
     SpriteRenderer spriteRenderer;
@@ -31,6 +32,7 @@ public class CharacterBasic : MonoBehaviour
         transform = GetComponent<Transform>();
         allSpeed = speed;
         reverse = -(movement);
+        
 
     }
 
@@ -46,7 +48,7 @@ public class CharacterBasic : MonoBehaviour
 
     public void Update()
     {
-        if ((stun <= 0.0f)||block)
+        if (stun <= 0.0f)
         {
             PlayerInput();
             stun = 0.0f;
@@ -73,20 +75,20 @@ public class CharacterBasic : MonoBehaviour
         {
             Move(speed);
         }
-        else
+        else if(!(block))
         {
             KnockBack();
         }
     }
     public void Move(float speed)
     {
-        if(!(movement = Vector2.Left))
+        if(!(movement == Vector2.left))
         {
             rigidbody.MovePosition(rigidbody.position + movement * speed * Time.fixedDeltaTime);
         }
         else
         {
-            rigidbody.MovePosition(rigidbody.position + movement * (speed/2)* Time.fixedDeltaTime);
+            rigidbody.MovePosition(rigidbody.position + movement * (speed/4)* Time.fixedDeltaTime);
         }
         
     }
