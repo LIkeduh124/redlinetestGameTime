@@ -214,6 +214,7 @@ RectTransform:
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 1050449251}
   - {fileID: 396935362}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -233,9 +234,8 @@ GameObject:
   - component: {fileID: 396935362}
   - component: {fileID: 396935364}
   - component: {fileID: 396935363}
-  - component: {fileID: 396935365}
-  m_Layer: 5
-  m_Name: HealthbarBorder
+  m_Layer: 6
+  m_Name: RedHealth
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -252,13 +252,12 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 1050449251}
+  m_Children: []
   m_Father: {fileID: 136587059}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -233.5, y: 79.58}
+  m_AnchorMin: {x: 0, y: 0.5}
+  m_AnchorMax: {x: 0, y: 0.5}
+  m_AnchoredPosition: {x: 165.20001, y: 84.399994}
   m_SizeDelta: {x: 80, y: 38}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &396935363
@@ -274,7 +273,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
   m_Material: {fileID: 0}
-  m_Color: {r: 0, g: 0, b: 0, a: 1}
+  m_Color: {r: 1, g: 0, b: 0, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -299,23 +298,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 396935361}
   m_CullTransparentMesh: 1
---- !u!114 &396935365
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 396935361}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 72bd51aad635f0c4fabcf577e7d27dd8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: '::'
-  Health: 100
-  MaxHealth: 100
-  Width: 80
-  Height: 38
-  healthBar: {fileID: 396935362}
 --- !u!1 &498209760
 GameObject:
   m_ObjectHideFlags: 0
@@ -425,7 +407,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::NewMonoBehaviourScript
   Health: 80
   MaxHealth: 100
-  healthBar: {fileID: 396935365}
+  healthBar: {fileID: 1050449254}
 --- !u!114 &498209764
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -438,9 +420,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 694fba0d11084564da812c3612945341, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
-  Health: 80
-  MaxHealth: 100
-  healthBar: {fileID: 396935365}
 --- !u!50 &498209765
 Rigidbody2D:
   serializedVersion: 5
@@ -617,8 +596,9 @@ GameObject:
   - component: {fileID: 1050449251}
   - component: {fileID: 1050449253}
   - component: {fileID: 1050449252}
+  - component: {fileID: 1050449254}
   m_Layer: 5
-  m_Name: RedHealth
+  m_Name: Healthborder
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -636,11 +616,11 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 396935362}
+  m_Father: {fileID: 136587059}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 0, y: 0.5}
-  m_AnchoredPosition: {x: 0.0000076293945, y: 0.215}
+  m_AnchoredPosition: {x: 125.20001, y: 84.399994}
   m_SizeDelta: {x: 80, y: 38}
   m_Pivot: {x: 0, y: 0.5}
 --- !u!114 &1050449252
@@ -656,7 +636,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 0, b: 0, a: 1}
+  m_Color: {r: 0, g: 0, b: 0, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -681,6 +661,23 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1050449250}
   m_CullTransparentMesh: 1
+--- !u!114 &1050449254
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1050449250}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 72bd51aad635f0c4fabcf577e7d27dd8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: '::'
+  Health: 100
+  MaxHealth: 100
+  Width: 80
+  Height: 38
+  healthBar: {fileID: 396935362}
 --- !u!1 &1666179495
 GameObject:
   m_ObjectHideFlags: 0
