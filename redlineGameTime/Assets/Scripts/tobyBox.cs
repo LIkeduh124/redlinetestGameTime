@@ -27,7 +27,7 @@ public class tobyBox : CharacterBasic
     private float speed = 5.0f;
     private InputAction action;
     private BenStiller benStiller;
-    private Vector2 movement, reverse;
+    private UnityEngine.Vector2 movement, reverse;
     //rigidBody2d
 
     private Rigidbody2D rigidbody;
@@ -135,14 +135,7 @@ public class tobyBox : CharacterBasic
         Debug.Log("duuuude");
         setHealth(-20);
     }
-    private void KnockBack()
-    {
-        if (!(other.CompareTag("AbeHitbox")))
-        {
-            stun = .5f;
-            reverse = (transform.position - other.transform.position);
-        }
-    }
+    
 
 
 }
