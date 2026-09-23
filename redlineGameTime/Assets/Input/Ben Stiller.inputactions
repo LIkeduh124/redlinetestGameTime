@@ -177,23 +177,23 @@
             ]
         },
         {
-            "name": "PlayerTwo",
-            "id": "474cd6fb-70a6-4c65-89d0-21dc5353f2c2",
+            "name": "HPTest",
+            "id": "10713825-3da4-4f4a-b817-f7fd19b0d26d",
             "actions": [
                 {
-                    "name": "Movement",
-                    "type": "PassThrough",
-                    "id": "58a03c3a-87e3-465d-a028-4f102c5eb877",
-                    "expectedControlType": "Vector2",
+                    "name": "LowerHealth",
+                    "type": "Button",
+                    "id": "6bfa76c5-fe5a-4f3a-ae16-d018ed4a0988",
+                    "expectedControlType": "",
                     "processors": "",
                     "interactions": "",
-                    "initialStateCheck": true,
+                    "initialStateCheck": false,
                     "priority": 0
                 },
                 {
-                    "name": "Hp",
+                    "name": "AddHealth",
                     "type": "Button",
-                    "id": "bc5eb464-2012-4f1d-9170-14b85e9db701",
+                    "id": "fe11d8a2-d8bc-4981-b0c1-bf144ad2e433",
                     "expectedControlType": "",
                     "processors": "",
                     "interactions": "",
@@ -203,68 +203,46 @@
             ],
             "bindings": [
                 {
-                    "name": "2D Vector",
-                    "id": "7373b593-c139-475c-8d51-d812d911c636",
-                    "path": "2DVector",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Movement",
-                    "isComposite": true,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "up",
-                    "id": "a1e13959-d412-4816-b642-3cea9144c556",
-                    "path": "<Keyboard>/u",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Movement",
-                    "isComposite": false,
-                    "isPartOfComposite": true
-                },
-                {
-                    "name": "down",
-                    "id": "5074abea-385c-4e77-95cf-96016d2578b1",
-                    "path": "<Keyboard>/j",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Movement",
-                    "isComposite": false,
-                    "isPartOfComposite": true
-                },
-                {
-                    "name": "left",
-                    "id": "2cd07e1a-d7db-4abd-b279-8d9a53b539ea",
-                    "path": "<Keyboard>/h",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Movement",
-                    "isComposite": false,
-                    "isPartOfComposite": true
-                },
-                {
-                    "name": "right",
-                    "id": "8aa08bb3-99a9-4b7c-b405-797dc2214934",
-                    "path": "<Keyboard>/k",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Movement",
-                    "isComposite": false,
-                    "isPartOfComposite": true
-                },
-                {
                     "name": "",
-                    "id": "223dfe86-40ec-448e-acbc-bda352291758",
+                    "id": "f2443f5b-aad4-4500-9bfb-7e4916ce8d8b",
                     "path": "",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Hp",
+                    "action": "LowerHealth",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "66f3fe54-d889-4cae-b07e-19afb6eeda12",
+                    "path": "<Keyboard>/j",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "LowerHealth",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "fa6b0449-d600-45f5-9e94-efb3c8508100",
+                    "path": "",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "AddHealth",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "0ad97bc4-61be-4405-8459-749226e00042",
+                    "path": "<Keyboard>/k",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "AddHealth",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

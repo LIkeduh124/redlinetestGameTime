@@ -263,23 +263,23 @@ public partial class @BenStiller: IInputActionCollection2, IDisposable
             ]
         },
         {
-            ""name"": ""PlayerTwo"",
-            ""id"": ""474cd6fb-70a6-4c65-89d0-21dc5353f2c2"",
+            ""name"": ""HPTest"",
+            ""id"": ""10713825-3da4-4f4a-b817-f7fd19b0d26d"",
             ""actions"": [
                 {
-                    ""name"": ""Movement"",
-                    ""type"": ""PassThrough"",
-                    ""id"": ""58a03c3a-87e3-465d-a028-4f102c5eb877"",
-                    ""expectedControlType"": ""Vector2"",
+                    ""name"": ""LowerHealth"",
+                    ""type"": ""Button"",
+                    ""id"": ""6bfa76c5-fe5a-4f3a-ae16-d018ed4a0988"",
+                    ""expectedControlType"": """",
                     ""processors"": """",
                     ""interactions"": """",
-                    ""initialStateCheck"": true,
+                    ""initialStateCheck"": false,
                     ""priority"": 0
                 },
                 {
-                    ""name"": ""Hp"",
+                    ""name"": ""AddHealth"",
                     ""type"": ""Button"",
-                    ""id"": ""bc5eb464-2012-4f1d-9170-14b85e9db701"",
+                    ""id"": ""fe11d8a2-d8bc-4981-b0c1-bf144ad2e433"",
                     ""expectedControlType"": """",
                     ""processors"": """",
                     ""interactions"": """",
@@ -289,68 +289,46 @@ public partial class @BenStiller: IInputActionCollection2, IDisposable
             ],
             ""bindings"": [
                 {
-                    ""name"": ""2D Vector"",
-                    ""id"": ""7373b593-c139-475c-8d51-d812d911c636"",
-                    ""path"": ""2DVector"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Movement"",
-                    ""isComposite"": true,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": ""up"",
-                    ""id"": ""a1e13959-d412-4816-b642-3cea9144c556"",
-                    ""path"": ""<Keyboard>/u"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Movement"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": true
-                },
-                {
-                    ""name"": ""down"",
-                    ""id"": ""5074abea-385c-4e77-95cf-96016d2578b1"",
-                    ""path"": ""<Keyboard>/j"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Movement"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": true
-                },
-                {
-                    ""name"": ""left"",
-                    ""id"": ""2cd07e1a-d7db-4abd-b279-8d9a53b539ea"",
-                    ""path"": ""<Keyboard>/h"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Movement"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": true
-                },
-                {
-                    ""name"": ""right"",
-                    ""id"": ""8aa08bb3-99a9-4b7c-b405-797dc2214934"",
-                    ""path"": ""<Keyboard>/k"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Movement"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": true
-                },
-                {
                     ""name"": """",
-                    ""id"": ""223dfe86-40ec-448e-acbc-bda352291758"",
+                    ""id"": ""f2443f5b-aad4-4500-9bfb-7e4916ce8d8b"",
                     ""path"": """",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""Hp"",
+                    ""action"": ""LowerHealth"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""66f3fe54-d889-4cae-b07e-19afb6eeda12"",
+                    ""path"": ""<Keyboard>/j"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""LowerHealth"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""fa6b0449-d600-45f5-9e94-efb3c8508100"",
+                    ""path"": """",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""AddHealth"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""0ad97bc4-61be-4405-8459-749226e00042"",
+                    ""path"": ""<Keyboard>/k"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""AddHealth"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -369,10 +347,10 @@ public partial class @BenStiller: IInputActionCollection2, IDisposable
         // PlayButton
         m_PlayButton = asset.FindActionMap("PlayButton", throwIfNotFound: true);
         m_PlayButton_Click = m_PlayButton.FindAction("Click", throwIfNotFound: true);
-        // PlayerTwo
-        m_PlayerTwo = asset.FindActionMap("PlayerTwo", throwIfNotFound: true);
-        m_PlayerTwo_Movement = m_PlayerTwo.FindAction("Movement", throwIfNotFound: true);
-        m_PlayerTwo_Hp = m_PlayerTwo.FindAction("Hp", throwIfNotFound: true);
+        // HPTest
+        m_HPTest = asset.FindActionMap("HPTest", throwIfNotFound: true);
+        m_HPTest_LowerHealth = m_HPTest.FindAction("LowerHealth", throwIfNotFound: true);
+        m_HPTest_AddHealth = m_HPTest.FindAction("AddHealth", throwIfNotFound: true);
     }
 
     ~@BenStiller()
@@ -380,7 +358,7 @@ public partial class @BenStiller: IInputActionCollection2, IDisposable
         UnityEngine.Debug.Assert(!m_Shmovement.enabled, "This will cause a leak and performance issues, BenStiller.Shmovement.Disable() has not been called.");
         UnityEngine.Debug.Assert(!m_Combat.enabled, "This will cause a leak and performance issues, BenStiller.Combat.Disable() has not been called.");
         UnityEngine.Debug.Assert(!m_PlayButton.enabled, "This will cause a leak and performance issues, BenStiller.PlayButton.Disable() has not been called.");
-        UnityEngine.Debug.Assert(!m_PlayerTwo.enabled, "This will cause a leak and performance issues, BenStiller.PlayerTwo.Disable() has not been called.");
+        UnityEngine.Debug.Assert(!m_HPTest.enabled, "This will cause a leak and performance issues, BenStiller.HPTest.Disable() has not been called.");
     }
 
     /// <summary>
@@ -752,34 +730,34 @@ public partial class @BenStiller: IInputActionCollection2, IDisposable
     /// </summary>
     public PlayButtonActions @PlayButton => new PlayButtonActions(this);
 
-    // PlayerTwo
-    private readonly InputActionMap m_PlayerTwo;
-    private List<IPlayerTwoActions> m_PlayerTwoActionsCallbackInterfaces = new List<IPlayerTwoActions>();
-    private readonly InputAction m_PlayerTwo_Movement;
-    private readonly InputAction m_PlayerTwo_Hp;
+    // HPTest
+    private readonly InputActionMap m_HPTest;
+    private List<IHPTestActions> m_HPTestActionsCallbackInterfaces = new List<IHPTestActions>();
+    private readonly InputAction m_HPTest_LowerHealth;
+    private readonly InputAction m_HPTest_AddHealth;
     /// <summary>
-    /// Provides access to input actions defined in input action map "PlayerTwo".
+    /// Provides access to input actions defined in input action map "HPTest".
     /// </summary>
-    public struct PlayerTwoActions
+    public struct HPTestActions
     {
         private @BenStiller m_Wrapper;
 
         /// <summary>
         /// Construct a new instance of the input action map wrapper class.
         /// </summary>
-        public PlayerTwoActions(@BenStiller wrapper) { m_Wrapper = wrapper; }
+        public HPTestActions(@BenStiller wrapper) { m_Wrapper = wrapper; }
         /// <summary>
-        /// Provides access to the underlying input action "PlayerTwo/Movement".
+        /// Provides access to the underlying input action "HPTest/LowerHealth".
         /// </summary>
-        public InputAction @Movement => m_Wrapper.m_PlayerTwo_Movement;
+        public InputAction @LowerHealth => m_Wrapper.m_HPTest_LowerHealth;
         /// <summary>
-        /// Provides access to the underlying input action "PlayerTwo/Hp".
+        /// Provides access to the underlying input action "HPTest/AddHealth".
         /// </summary>
-        public InputAction @Hp => m_Wrapper.m_PlayerTwo_Hp;
+        public InputAction @AddHealth => m_Wrapper.m_HPTest_AddHealth;
         /// <summary>
         /// Provides access to the underlying input action map instance.
         /// </summary>
-        public InputActionMap Get() { return m_Wrapper.m_PlayerTwo; }
+        public InputActionMap Get() { return m_Wrapper.m_HPTest; }
         /// <inheritdoc cref="UnityEngine.InputSystem.InputActionMap.Enable()" />
         public void Enable() { Get().Enable(); }
         /// <inheritdoc cref="UnityEngine.InputSystem.InputActionMap.Disable()" />
@@ -787,9 +765,9 @@ public partial class @BenStiller: IInputActionCollection2, IDisposable
         /// <inheritdoc cref="UnityEngine.InputSystem.InputActionMap.enabled" />
         public bool enabled => Get().enabled;
         /// <summary>
-        /// Implicitly converts an <see ref="PlayerTwoActions" /> to an <see ref="InputActionMap" /> instance.
+        /// Implicitly converts an <see ref="HPTestActions" /> to an <see ref="InputActionMap" /> instance.
         /// </summary>
-        public static implicit operator InputActionMap(PlayerTwoActions set) { return set.Get(); }
+        public static implicit operator InputActionMap(HPTestActions set) { return set.Get(); }
         /// <summary>
         /// Adds <see cref="InputAction.started"/>, <see cref="InputAction.performed"/> and <see cref="InputAction.canceled"/> callbacks provided via <param cref="instance" /> on all input actions contained in this map.
         /// </summary>
@@ -797,17 +775,17 @@ public partial class @BenStiller: IInputActionCollection2, IDisposable
         /// <remarks>
         /// If <paramref name="instance" /> is <c>null</c> or <paramref name="instance"/> have already been added this method does nothing.
         /// </remarks>
-        /// <seealso cref="PlayerTwoActions" />
-        public void AddCallbacks(IPlayerTwoActions instance)
+        /// <seealso cref="HPTestActions" />
+        public void AddCallbacks(IHPTestActions instance)
         {
-            if (instance == null || m_Wrapper.m_PlayerTwoActionsCallbackInterfaces.Contains(instance)) return;
-            m_Wrapper.m_PlayerTwoActionsCallbackInterfaces.Add(instance);
-            @Movement.started += instance.OnMovement;
-            @Movement.performed += instance.OnMovement;
-            @Movement.canceled += instance.OnMovement;
-            @Hp.started += instance.OnHp;
-            @Hp.performed += instance.OnHp;
-            @Hp.canceled += instance.OnHp;
+            if (instance == null || m_Wrapper.m_HPTestActionsCallbackInterfaces.Contains(instance)) return;
+            m_Wrapper.m_HPTestActionsCallbackInterfaces.Add(instance);
+            @LowerHealth.started += instance.OnLowerHealth;
+            @LowerHealth.performed += instance.OnLowerHealth;
+            @LowerHealth.canceled += instance.OnLowerHealth;
+            @AddHealth.started += instance.OnAddHealth;
+            @AddHealth.performed += instance.OnAddHealth;
+            @AddHealth.canceled += instance.OnAddHealth;
         }
 
         /// <summary>
@@ -816,24 +794,24 @@ public partial class @BenStiller: IInputActionCollection2, IDisposable
         /// <remarks>
         /// Calling this method when <paramref name="instance" /> have not previously been registered has no side-effects.
         /// </remarks>
-        /// <seealso cref="PlayerTwoActions" />
-        private void UnregisterCallbacks(IPlayerTwoActions instance)
+        /// <seealso cref="HPTestActions" />
+        private void UnregisterCallbacks(IHPTestActions instance)
         {
-            @Movement.started -= instance.OnMovement;
-            @Movement.performed -= instance.OnMovement;
-            @Movement.canceled -= instance.OnMovement;
-            @Hp.started -= instance.OnHp;
-            @Hp.performed -= instance.OnHp;
-            @Hp.canceled -= instance.OnHp;
+            @LowerHealth.started -= instance.OnLowerHealth;
+            @LowerHealth.performed -= instance.OnLowerHealth;
+            @LowerHealth.canceled -= instance.OnLowerHealth;
+            @AddHealth.started -= instance.OnAddHealth;
+            @AddHealth.performed -= instance.OnAddHealth;
+            @AddHealth.canceled -= instance.OnAddHealth;
         }
 
         /// <summary>
-        /// Unregisters <param cref="instance" /> and unregisters all input action callbacks via <see cref="PlayerTwoActions.UnregisterCallbacks(IPlayerTwoActions)" />.
+        /// Unregisters <param cref="instance" /> and unregisters all input action callbacks via <see cref="HPTestActions.UnregisterCallbacks(IHPTestActions)" />.
         /// </summary>
-        /// <seealso cref="PlayerTwoActions.UnregisterCallbacks(IPlayerTwoActions)" />
-        public void RemoveCallbacks(IPlayerTwoActions instance)
+        /// <seealso cref="HPTestActions.UnregisterCallbacks(IHPTestActions)" />
+        public void RemoveCallbacks(IHPTestActions instance)
         {
-            if (m_Wrapper.m_PlayerTwoActionsCallbackInterfaces.Remove(instance))
+            if (m_Wrapper.m_HPTestActionsCallbackInterfaces.Remove(instance))
                 UnregisterCallbacks(instance);
         }
 
@@ -843,21 +821,21 @@ public partial class @BenStiller: IInputActionCollection2, IDisposable
         /// <remarks>
         /// If <paramref name="instance" /> is <c>null</c>, calling this method will only unregister all existing callbacks but not register any new callbacks.
         /// </remarks>
-        /// <seealso cref="PlayerTwoActions.AddCallbacks(IPlayerTwoActions)" />
-        /// <seealso cref="PlayerTwoActions.RemoveCallbacks(IPlayerTwoActions)" />
-        /// <seealso cref="PlayerTwoActions.UnregisterCallbacks(IPlayerTwoActions)" />
-        public void SetCallbacks(IPlayerTwoActions instance)
+        /// <seealso cref="HPTestActions.AddCallbacks(IHPTestActions)" />
+        /// <seealso cref="HPTestActions.RemoveCallbacks(IHPTestActions)" />
+        /// <seealso cref="HPTestActions.UnregisterCallbacks(IHPTestActions)" />
+        public void SetCallbacks(IHPTestActions instance)
         {
-            foreach (var item in m_Wrapper.m_PlayerTwoActionsCallbackInterfaces)
+            foreach (var item in m_Wrapper.m_HPTestActionsCallbackInterfaces)
                 UnregisterCallbacks(item);
-            m_Wrapper.m_PlayerTwoActionsCallbackInterfaces.Clear();
+            m_Wrapper.m_HPTestActionsCallbackInterfaces.Clear();
             AddCallbacks(instance);
         }
     }
     /// <summary>
-    /// Provides a new <see cref="PlayerTwoActions" /> instance referencing this action map.
+    /// Provides a new <see cref="HPTestActions" /> instance referencing this action map.
     /// </summary>
-    public PlayerTwoActions @PlayerTwo => new PlayerTwoActions(this);
+    public HPTestActions @HPTest => new HPTestActions(this);
     /// <summary>
     /// Interface to implement callback methods for all input action callbacks associated with input actions defined by "Shmovement" which allows adding and removing callbacks.
     /// </summary>
@@ -911,25 +889,25 @@ public partial class @BenStiller: IInputActionCollection2, IDisposable
         void OnClick(InputAction.CallbackContext context);
     }
     /// <summary>
-    /// Interface to implement callback methods for all input action callbacks associated with input actions defined by "PlayerTwo" which allows adding and removing callbacks.
+    /// Interface to implement callback methods for all input action callbacks associated with input actions defined by "HPTest" which allows adding and removing callbacks.
     /// </summary>
-    /// <seealso cref="PlayerTwoActions.AddCallbacks(IPlayerTwoActions)" />
-    /// <seealso cref="PlayerTwoActions.RemoveCallbacks(IPlayerTwoActions)" />
-    public interface IPlayerTwoActions
+    /// <seealso cref="HPTestActions.AddCallbacks(IHPTestActions)" />
+    /// <seealso cref="HPTestActions.RemoveCallbacks(IHPTestActions)" />
+    public interface IHPTestActions
     {
         /// <summary>
-        /// Method invoked when associated input action "Movement" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// Method invoked when associated input action "LowerHealth" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
         /// </summary>
         /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
         /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
         /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
-        void OnMovement(InputAction.CallbackContext context);
+        void OnLowerHealth(InputAction.CallbackContext context);
         /// <summary>
-        /// Method invoked when associated input action "Hp" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// Method invoked when associated input action "AddHealth" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
         /// </summary>
         /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
         /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
         /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
-        void OnHp(InputAction.CallbackContext context);
+        void OnAddHealth(InputAction.CallbackContext context);
     }
 }
