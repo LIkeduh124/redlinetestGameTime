@@ -1,7 +1,8 @@
+using System.Numerics;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
-public class NewMonoBehaviourScript : MonoBehaviour
+public class tobyBox : CharacterBasic
 {
     //create variables to set health and max health
     public float Health, MaxHealth;
@@ -57,10 +58,7 @@ public class NewMonoBehaviourScript : MonoBehaviour
         action.performed += OnPress;
     }
 
-    private void OnDisable()
-    {
-        benStiller.Disable();
-    }
+    
 
     private void Update()
     {
@@ -91,32 +89,25 @@ public class NewMonoBehaviourScript : MonoBehaviour
         */
     }
 
-    private void FixedUpdate()
+    public override void PlayerInput()
     {
-        if (stun <= 0.0f)
+        //Defines how we move based on the values in our input map
+        movement = base.benStiller.Shmovement.LeftandRight.ReadValue<UnityEngine.Vector2>();
+        //Shows our inputs in the console
+        if(movement == UnityEngine.Vector2.left)
         {
-            Move(speed);
+            block = true;
         }
         else
         {
-            KnockBack();
+            block = false;
         }
+
+        reverse = -(movement);
         
     }
 
-    private void PlayerInput()
-    {
-        //Defines how we move based on the values in our input map
-        movement = benStiller.Shmovement.LeftandRight.ReadValue<Vector2>();
-        //Shows our inputs in the console
-        reverse = -(movement);
-        //Debug.Log(movement);
-    }
-
-    private void Move(float speed)
-    {
-       rigidbody.MovePosition(rigidbody.position + movement * speed * Time.fixedDeltaTime);
-    }
+    
 
     void OnCollisionEnter2D(Collision2D collision)
     {
@@ -125,7 +116,8 @@ public class NewMonoBehaviourScript : MonoBehaviour
             Debug.Log(collision.gameObject.name);
 
         }
-        else if ((collision.gameObject.CompareTag("PhillipeHitbox")))
+        else if (((collision.gameObject.CompareTag("AbeHitbox"))) ||(collision.collider.isTrigger))
+            
         {
             Debug.Log(collision.gameObject.name);
         }
@@ -145,6 +137,12 @@ public class NewMonoBehaviourScript : MonoBehaviour
     }
     private void KnockBack()
     {
-        rigidbody.MovePosition(rigidbody.position + reverse * speed * Time.fixedDeltaTime);
+        if (!(other.CompareTag("AbeHitbox")))
+        {
+            stun = .5f;
+            reverse = (transform.position - other.transform.position);
+        }
     }
+
+
 }

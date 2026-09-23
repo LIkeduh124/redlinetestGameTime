@@ -280,6 +280,14 @@
       },
       "url": "https://packages.unity.com"
     },
+    "com.unity_f83f3467cc578776fe01.playermovement": {
+      "version": "file:com.unity_f83f3467cc578776fe01.playermovement",
+      "depth": 0,
+      "source": "embedded",
+      "dependencies": {
+        "com.unity.test-framework": "1.6.0"
+      }
+    },
     "com.unity.modules.accessibility": {
       "version": "1.0.0",
       "depth": 0,

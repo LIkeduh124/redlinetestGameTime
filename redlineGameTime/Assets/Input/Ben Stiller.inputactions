@@ -88,13 +88,23 @@
                     "interactions": "",
                     "initialStateCheck": false,
                     "priority": 0
+                },
+                {
+                    "name": "Attarck",
+                    "type": "Button",
+                    "id": "1080f34c-9fc0-4378-9d9e-699a58d2491d",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false,
+                    "priority": 0
                 }
             ],
             "bindings": [
                 {
                     "name": "",
                     "id": "406673be-26c7-49ee-a453-b375f8aeafa0",
-                    "path": "<Keyboard>/j",
+                    "path": "<Keyboard>/e",
                     "interactions": "SlowTap",
                     "processors": "",
                     "groups": "",
@@ -110,6 +120,17 @@
                     "processors": "",
                     "groups": "",
                     "action": "Attack",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "11298e23-f622-4e7e-a76a-d7c84089888b",
+                    "path": "<Keyboard>/q",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Attarck",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

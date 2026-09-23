@@ -1,35 +1,53 @@
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.InputSystem;
+using System.Diagnostics;
 
 public class Appears : MonoBehaviour
 {
-    private BenStiller benStiller;
-    private Button toddHowad;
-    public SpriteRenderer spriteRenderer;
-    private float time;
-    private bool checker;
+    protected BenStiller benStiller;
+    protected Button toddHowad;
+    protected SpriteRenderer spriteRenderer;
+    protected float time;
+    protected bool checker;
+    protected Rigidbody2D rigidbody;
+    protected CircleCollider2D circleCollider;
+    protected BoxCollider2D polygonCollider;
+   
+    protected Transform joey;
+    [SerializeField] GameObject father;
+    protected GameObject allFather;
+    protected Vector2 dad, son, distance;
 
-    private void Awake()
+
+    protected virtual void Awake()
     {
         benStiller = new BenStiller();
         spriteRenderer = GetComponent<SpriteRenderer>();
         toddHowad = GetComponent<Button>();
         checker = false;
         time = 0.0f;
+        polygonCollider = GetComponent<BoxCollider2D>();
+        rigidbody = GetComponent<Rigidbody2D>();
+        rigidbody.gravityScale = 0.0f;
+        allFather = father;
+        dad = father.GetComponent<Transform>().position;
+        son = GetComponent<Transform>().position;
+        distance = dad - son;
+
     }
 
-    private void OnEnable()
+    protected virtual void OnEnable()
     {
         benStiller.Enable();
     }
 
-    private void OnDisable()
+    protected void OnDisable()
     {
         benStiller.Disable();
     }
 
-    private void Update()
+    protected virtual void Update()
     {
         Appear();
         //CheckHeld();
@@ -37,7 +55,7 @@ public class Appears : MonoBehaviour
         
     }
 
-    private void Appear()
+    protected virtual void Appear()
     {
         /*
          * Toggleable
@@ -64,6 +82,7 @@ public class Appears : MonoBehaviour
         else if((time<=3.0)&&(time>0))
         {
             time -= Time.deltaTime;
+            
         }
         
     }
@@ -82,4 +101,6 @@ public class Appears : MonoBehaviour
 
     }
     */
+    
+
 }

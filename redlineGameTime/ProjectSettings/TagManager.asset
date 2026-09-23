@@ -8,6 +8,8 @@ TagManager:
   - Hitbox
   - PhillipeHitbox
   - Character
+  - DanielHitbox
+  - AbeHitbox
   layers:
   - Default
   - TransparentFX

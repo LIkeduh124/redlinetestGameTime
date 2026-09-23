@@ -1,0 +1,11 @@
+{
+    "name": "UnityF83f3467cc578776fe01.PlayerMovement.Tests",
+    "references": [
+        "UnityF83f3467cc578776fe01.PlayerMovement"
+    ],
+    "optionalUnityReferences": [
+        "TestAssemblies"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": []
+}
