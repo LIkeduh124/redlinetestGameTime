@@ -6,7 +6,7 @@ public class CharacterBasic : MonoBehaviour
     [SerializeField] float speed = 5.0f;
     protected float allSpeed;
     [SerializeField] float weight = 3.0f;
-    protected BenStiller benStiller;
+    protected BenStiller1 benStiller;
     protected Vector2 movement, reverse;
     //rigidBody2d
     public bool yes, no, death, block;
@@ -25,7 +25,7 @@ public class CharacterBasic : MonoBehaviour
         no = false;
         block = no;
         death = no;
-        benStiller = new BenStiller();
+        benStiller = new BenStiller1();
         spriteRenderer = GetComponent<SpriteRenderer>();
         rigidbody = GetComponent<Rigidbody2D>();
         polygonCollider = GetComponent<PolygonCollider2D>();

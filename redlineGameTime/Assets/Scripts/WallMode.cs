@@ -19,7 +19,7 @@ public class WallMode : Appears
         base.Awake();
         polygonCollider = GetComponent<BoxCollider2D>();
         polygonCollider.enabled = false;
-        benStiller = new BenStiller();
+        benStiller = new BenStiller1();
         spriteRenderer = GetComponent<SpriteRenderer>();
         checker = false;
         time = 0.0f;

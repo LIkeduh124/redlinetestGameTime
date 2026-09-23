@@ -413,8 +413,8 @@ GameObject:
   - component: {fileID: 552824126}
   - component: {fileID: 552824125}
   - component: {fileID: 552824124}
-  - component: {fileID: 552824127}
   - component: {fileID: 552824128}
+  - component: {fileID: 552824129}
   m_Layer: 0
   m_Name: AbeLincoln
   m_TagString: Character
@@ -526,26 +526,6 @@ Transform:
   - {fileID: 1684457720}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &552824127
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 552824123}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d638953e9424069459c8b6ff85ef0e0d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::NewMonoBehaviourScript
-  speed: 10
-  weight: 3
-  yes: 0
-  no: 0
-  death: 0
-  block: 0
-  stun: 0
-  speed: 10
 --- !u!60 &552824128
 PolygonCollider2D:
   m_ObjectHideFlags: 0
@@ -596,6 +576,26 @@ PolygonCollider2D:
       - {x: -0.5, y: -0.28866667}
       - {x: 0.5, y: -0.28866667}
   m_UseDelaunayMesh: 1
+--- !u!114 &552824129
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 552824123}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4af301d04c8d1149bf96b36d47a2161, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::tobyBox1
+  speed: 10
+  weight: 3
+  yes: 0
+  no: 0
+  death: 0
+  block: 0
+  stun: 0
+  speed: 5
 --- !u!1 &1045997979
 GameObject:
   m_ObjectHideFlags: 0

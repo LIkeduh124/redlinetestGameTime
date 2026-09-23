@@ -5,7 +5,7 @@ using System.Diagnostics;
 
 public class Appears : MonoBehaviour
 {
-    protected BenStiller benStiller;
+    protected BenStiller1 benStiller;
     protected Button toddHowad;
     protected SpriteRenderer spriteRenderer;
     protected float time;
@@ -22,7 +22,7 @@ public class Appears : MonoBehaviour
 
     protected virtual void Awake()
     {
-        benStiller = new BenStiller();
+        benStiller = new BenStiller1();
         spriteRenderer = GetComponent<SpriteRenderer>();
         toddHowad = GetComponent<Button>();
         checker = false;
