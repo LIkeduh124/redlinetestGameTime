@@ -9,6 +9,12 @@ public class HealthManager : MonoBehaviour
     [SerializeField]
     private RectTransform healthBar;
 
+    public void Awake()
+    {
+        
+        SetMaxHealth(MaxHealth);
+    }
+
     public void SetMaxHealth(float maxHealth)
     {
         //sets the health value to the MaxHealth

@@ -4,17 +4,31 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 public class tobyBox1 : CharacterBasic
 {
-    [SerializeField] private float speed = 5.0f;
 
-    
-    
+
+    public float health, maxHealth;
+    private bool isHeld = false;
 
     private SpriteRenderer spriteRenderer;
-    
 
     
 
-    
+    public void SetHealth(float healthChange)
+    {
+        
+        //changes the health into the amount thats changed
+        health += healthChange;
+        health = Mathf.Clamp(health, 0, maxHealth);
+
+        
+        allHealth.SetHealth(health);
+        
+    }
+
+
+
+
+
 
 
     public override void PlayerInput()
@@ -29,6 +43,16 @@ public class tobyBox1 : CharacterBasic
         else
         {
             block = false;
+        }
+
+        if((forHealth.HPTest.LowerHealth.IsPressed())&&(isHeld ==false))
+        {
+            isHeld = true;
+            SetHealth(-20);
+        }
+        else if(!(forHealth.HPTest.LowerHealth.IsPressed()))
+        {
+            isHeld= false;
         }
 
         reverse = -(movement);
@@ -67,5 +91,6 @@ public class tobyBox1 : CharacterBasic
         }
     }
 
+    
 
 }

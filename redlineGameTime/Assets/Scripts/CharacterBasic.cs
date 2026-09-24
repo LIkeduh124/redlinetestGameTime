@@ -14,9 +14,11 @@ public class CharacterBasic : MonoBehaviour
     protected Rigidbody2D rigidbody;
     protected PolygonCollider2D polygonCollider;
     public float stun;
-    
-    
-   
+    protected BenStiller forHealth;
+    [SerializeField] HealthManager healthBar;
+    protected HealthManager allHealth;
+
+
 
     SpriteRenderer spriteRenderer;
     public void Awake()
@@ -33,6 +35,8 @@ public class CharacterBasic : MonoBehaviour
         transform = GetComponent<Transform>();
         allSpeed = speed;
         reverse = -(movement);
+        allHealth = healthBar;
+        forHealth = new BenStiller();
         
         
 
@@ -41,11 +45,13 @@ public class CharacterBasic : MonoBehaviour
     public void OnEnable()
     {
         benStiller.Enable();
+        forHealth.Enable();
     }
 
     public void OnDisable()
     {
         benStiller.Disable();
+        forHealth.Disable();
     }
 
     public void Update()

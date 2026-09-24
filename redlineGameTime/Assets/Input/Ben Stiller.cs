@@ -302,7 +302,7 @@ public partial class @BenStiller: IInputActionCollection2, IDisposable
                 {
                     ""name"": """",
                     ""id"": ""66f3fe54-d889-4cae-b07e-19afb6eeda12"",
-                    ""path"": ""<Keyboard>/j"",
+                    ""path"": ""<Keyboard>/p"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
