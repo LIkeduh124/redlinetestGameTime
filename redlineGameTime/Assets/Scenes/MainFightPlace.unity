@@ -435,11 +435,11 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 1861506867}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -366.78, y: 237.17}
-  m_SizeDelta: {x: 226.44, y: 49.67}
-  m_Pivot: {x: 0.5, y: 0.5}
+  m_AnchorMin: {x: 0, y: 0.5}
+  m_AnchorMax: {x: 0, y: 0.5}
+  m_AnchoredPosition: {x: 118, y: 237.17}
+  m_SizeDelta: {x: 200, y: 50}
+  m_Pivot: {x: 0, y: 0.5}
 --- !u!114 &548372855
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -454,8 +454,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::HealthManager
   Health: 100
   MaxHealth: 100
-  Width: 226.44
-  Height: 49.67
+  Width: 200
+  Height: 50
+  currentHealth: 0
   healthBar: {fileID: 548372854}
 --- !u!114 &548372856
 MonoBehaviour:
@@ -705,9 +706,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::HealthManager
   Health: 100
-  MaxHealth: 100
+  MaxHealth: 0
   Width: 0
   Height: 0
+  currentHealth: 0
   healthBar: {fileID: 548372854}
 --- !u!1 &1045997979
 GameObject:
@@ -1812,11 +1814,11 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 1861506867}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -366.78, y: 237.17}
-  m_SizeDelta: {x: 226.44, y: 49.67}
-  m_Pivot: {x: 0.5, y: 0.5}
+  m_AnchorMin: {x: 0, y: 0.5}
+  m_AnchorMax: {x: 0, y: 0.5}
+  m_AnchoredPosition: {x: 118, y: 237.17006}
+  m_SizeDelta: {x: 200, y: 50}
+  m_Pivot: {x: 0, y: 0.5}
 --- !u!114 &2141195818
 MonoBehaviour:
   m_ObjectHideFlags: 0

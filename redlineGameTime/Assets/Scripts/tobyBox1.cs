@@ -16,12 +16,10 @@ public class tobyBox1 : CharacterBasic
     public void SetHealth(float healthChange)
     {
         
-        //changes the health into the amount thats changed
-        health += healthChange;
-        health = Mathf.Clamp(health, 0, maxHealth);
+        //changes the health into the amount thats change
 
         
-        allHealth.SetHealth(health);
+        allHealth.SetHealth(healthChange);
         
     }
 
@@ -86,6 +84,7 @@ public class tobyBox1 : CharacterBasic
     {
         if (!(other.CompareTag("AbeHitbox")))
         {
+            SetHealth(-20);
             stun = .5f;
             reverse = (transform.position - other.transform.position);
         }
