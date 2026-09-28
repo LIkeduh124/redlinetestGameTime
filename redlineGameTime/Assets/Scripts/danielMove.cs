@@ -6,11 +6,12 @@ public class danielMove : CharacterBasic
 
 
     
-
+     
 
 
     public override void PlayerInput()
     {
+        this.side = !(GameData.Instance.sideCheck);
         base.movement = base.benStiller.PlayerTwo.Movement.ReadValue<Vector2>();
         reverse = -(movement);
     }

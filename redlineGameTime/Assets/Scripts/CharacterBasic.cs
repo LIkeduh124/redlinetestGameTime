@@ -17,7 +17,7 @@ public class CharacterBasic : MonoBehaviour
     protected BenStiller forHealth;
     [SerializeField] HealthManager healthBar;
     protected HealthManager allHealth;
-
+    public bool side;
 
 
     SpriteRenderer spriteRenderer;
@@ -37,8 +37,10 @@ public class CharacterBasic : MonoBehaviour
         reverse = -(movement);
         allHealth = healthBar;
         forHealth = new BenStiller();
-        
-        
+
+        //if side is true, they are Union
+        //False means confederate
+        side = GameData.Instance.sideCheck;
 
     }
 
@@ -56,6 +58,15 @@ public class CharacterBasic : MonoBehaviour
 
     public void Update()
     {
+        if (side == true)
+        {
+            spriteRenderer.color = Color.blue;
+        }
+        else if (side == false)
+        {
+            spriteRenderer.color = Color.red;
+        }
+
         if (stun <= 0.0f)
         {
             PlayerInput();

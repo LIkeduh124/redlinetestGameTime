@@ -8,7 +8,9 @@ public class StartMenuScript : MonoBehaviour
     {
         //Load the first Scene
         Debug.Log("Game Start button pressed");
+        GameData.Instance.sideCheck = true;
         SceneManager.LoadScene(1);
+        
     }
 
     public void QuitGame()
