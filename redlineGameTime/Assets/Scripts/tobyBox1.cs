@@ -82,7 +82,7 @@ public class tobyBox1 : CharacterBasic
 
     void OnTriggerEnter2D(Collider2D other)
     {
-        if (!(other.CompareTag("AbeHitbox")))
+        if ((!(other.CompareTag("AbeHitbox")))&&block==false)
         {
             SetHealth(-20);
             stun = .5f;
