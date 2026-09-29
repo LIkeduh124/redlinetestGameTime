@@ -8,7 +8,7 @@ public class BackWall : Appears
 
 
 
-    private danielMove cobyBox;
+   
     bool block, pressed;
     
     
@@ -16,7 +16,6 @@ public class BackWall : Appears
     protected override void FixedUpdate()
     {
         dad = this.allFather.GetComponent<Transform>().position;
-        cobyBox = GetComponentInParent<danielMove>();
         Debug.Log("The time is " + time);
         Appear();
         
@@ -45,11 +44,11 @@ public class BackWall : Appears
             pressed = false;
 
         }
-        else if ((time <= 1.0) && (time > 0))
+        else if (time > 0)
         {
             spriteRenderer.enabled = true;
             polygonCollider.enabled = true;
-            time -= Time.deltaTime;
+            time -= Time.fixedDeltaTime;
             Debug.Log("Time is now " + time);
             Move(5.0f);
 
