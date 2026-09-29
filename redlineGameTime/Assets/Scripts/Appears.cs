@@ -8,7 +8,7 @@ public class Appears : MonoBehaviour
     protected BenStiller1 benStiller;
     protected Button toddHowad;
     protected SpriteRenderer spriteRenderer;
-    protected float time;
+    public float time;
     protected bool checker;
     protected Rigidbody2D rigidbody;
     protected CircleCollider2D circleCollider;
@@ -47,7 +47,7 @@ public class Appears : MonoBehaviour
         benStiller.Disable();
     }
 
-    protected virtual void Update()
+    protected virtual void FixedUpdate()
     {
         Appear();
         //CheckHeld();

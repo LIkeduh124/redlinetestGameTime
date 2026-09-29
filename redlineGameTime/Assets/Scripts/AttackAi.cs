@@ -4,11 +4,19 @@ public class AttackAi : MonoBehaviour
 {
     [SerializeField] private Transform player;
     [SerializeField] public float detectionRange = 8f;
-    [SerializeField] public float attackRange = 1.5f;
+    [SerializeField] public float attackRange = 3f;
     [SerializeField] public float attackCooldown = 1f;
+    [SerializeField] private GameObject attack;
 
     private float nextAttackTime;
+    private BackWall backWall;
     // Update is called once per frame
+
+    public void Awake()
+    {
+        //Debug.Log(attack);
+        backWall = GetComponent<BackWall>();
+    }
     void Update()
     {
         if (player == null)
@@ -17,20 +25,20 @@ public class AttackAi : MonoBehaviour
         }
         float distance = Vector2.Distance(transform.position, player.position);
                   
-        
-        if (distance <= attackRange &&  Time.time >= nextAttackTime)
+        //Debug.Log(distance);
+        //Debug.Log(attackRange);
+        if (distance <= attackRange)
         {
             EnemyAttack();
-            nextAttackTime = Time.time + attackCooldown;
+            
 
         }
     }
     private void EnemyAttack()
     {
-        tobyBox1 playerHealth = player.GetComponent<tobyBox1>();
-        if (playerHealth != null)
+        if (attack.GetComponent<BackWall>().time <= 0)
         {
-            playerHealth.SetHealth(-20);
+            attack.GetComponent<BackWall>().time = 1.0f;
         }
 
         Debug.Log("Enemy Hit!");

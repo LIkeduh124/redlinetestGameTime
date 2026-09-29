@@ -34,7 +34,7 @@ public class WallMode : Appears
         benStiller.Disable();
     }
 
-    protected override void Update()
+    protected override void FixedUpdate()
     {
         
         Appear();

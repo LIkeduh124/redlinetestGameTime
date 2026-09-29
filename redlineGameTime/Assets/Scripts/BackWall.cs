@@ -13,45 +13,29 @@ public class BackWall : Appears
     
     
 
-    protected override void Update()
+    protected override void FixedUpdate()
     {
-        cobyBox = GetComponentInParent<danielMove>();
-        Appear();
         dad = this.allFather.GetComponent<Transform>().position;
+        cobyBox = GetComponentInParent<danielMove>();
+        Debug.Log("The time is " + time);
+        Appear();
+        
 
-        block = cobyBox.block;
+        
 
     }
 
+    private void Update()
+    {
+        Debug.Log("");
+    }
 
 
     protected override void Appear()
     {
-        /*
-         * Toggleable
-        if (((benStiller.Combat.Attack.IsPressed()) && spriteRenderer.enabled == true)&&(checker==false))
-        {
-            spriteRenderer.enabled = false;
-        }
-        else if (((benStiller.Combat.Attack.IsPressed()) && spriteRenderer.enabled == false) && (checker == false))
-        {
-            spriteRenderer.enabled = true;
-        }
-        */
+      
 
-        if (((time == 0) && (base.benStiller.Combat.Attarck.IsPressed()))&&pressed == false)
-        {
-
-
-            Debug.Log(base.benStiller.Combat.Attarck.IsPressed());
-            spriteRenderer.enabled = true;
-            polygonCollider.enabled = true;
-            time = 1.0f;
-            pressed = true;
-            
-
-        }
-        else if (time <= 0)
+        if (time <= 0)
         {
 
             spriteRenderer.enabled = false;
@@ -63,8 +47,11 @@ public class BackWall : Appears
         }
         else if ((time <= 1.0) && (time > 0))
         {
+            spriteRenderer.enabled = true;
+            polygonCollider.enabled = true;
             time -= Time.deltaTime;
-            Move(5f);
+            Debug.Log("Time is now " + time);
+            Move(5.0f);
 
         }
 
@@ -72,22 +59,25 @@ public class BackWall : Appears
 
     protected virtual void Move(float speed)
     {
+
         rigidbody.MovePosition(rigidbody.position + Vector2.left * speed * Time.fixedDeltaTime);
+        Debug.Log(Time.fixedDeltaTime);
 
     }
 
+    /*
     void OnTriggerEnter2D(Collider2D other)
     {
         if (other.gameObject.name.Equals("AbeLincoln"))
         {
-            Debug.Log(other.gameObject.name);
-            if(other.gameObject.GetComponent<tobyBox>().block == true)
+            Debug.Log(other.gameObject.GetComponent<tobyBox1>().block);
+            if(other.gameObject.GetComponent<tobyBox1>().block == true)
             {
                 time = 0.0f;
             }
         }
     }
 
-    
+    */
 
 }

@@ -700,16 +700,16 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 552824123}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 72bd51aad635f0c4fabcf577e7d27dd8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::HealthManager
   Health: 100
-  MaxHealth: 0
+  MaxHealth: 100
   Width: 0
   Height: 0
-  currentHealth: 0
+  currentHealth: 100
   healthBar: {fileID: 548372854}
 --- !u!1 &1045997979
 GameObject:
@@ -1071,7 +1071,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0a8d82758c13ee84c90867fb1157b6bf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::danielMove
-  speed: 5
+  speed: 3
   weight: 3
   yes: 0
   no: 0
@@ -1092,7 +1092,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::AiChase
   player: {fileID: 552824123}
-  speed: 1
+  speed: 3
 --- !u!114 &1228756938
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1105,6 +1105,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0d9c42064d8a10a419ac4c86ec25e5b7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
+  player: {fileID: 1372462080}
+  detectionRange: 30
+  attackRange: 5
+  attackCooldown: 1
+  attack: {fileID: 1320949144}
 --- !u!1 &1320949144
 GameObject:
   m_ObjectHideFlags: 0
@@ -1153,6 +1158,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe3b5ea8720eb4d44ad60f773a93837a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BackWall
+  time: 0
   father: {fileID: 1228756930}
 --- !u!50 &1320949147
 Rigidbody2D:
@@ -1193,6 +1199,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 09929d3de4f17ed4792047619885f060, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
+  time: 0
   father: {fileID: 1228756930}
 --- !u!61 &1320949149
 BoxCollider2D:
@@ -1493,6 +1500,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 09929d3de4f17ed4792047619885f060, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
+  time: 0
   father: {fileID: 552824123}
 --- !u!61 &1684457722
 BoxCollider2D:
