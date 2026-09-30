@@ -15,12 +15,13 @@ public class CharacterBasic : MonoBehaviour
     protected PolygonCollider2D polygonCollider;
     public float stun;
     protected BenStiller forHealth;
+    protected SpriteRenderer spriteRenderer;
     [SerializeField] HealthManager healthBar;
     protected HealthManager allHealth;
 
 
 
-    SpriteRenderer spriteRenderer;
+    
     public void Awake()
     {
         yes = true;
@@ -37,6 +38,7 @@ public class CharacterBasic : MonoBehaviour
         reverse = -(movement);
         allHealth = healthBar;
         forHealth = new BenStiller();
+
         
         
 
@@ -105,5 +107,17 @@ public class CharacterBasic : MonoBehaviour
     public void KnockBack()
     {
         rigidbody.MovePosition(rigidbody.position + reverse * speed * Time.fixedDeltaTime);
+    }
+
+    public Color SetColor(bool side)
+    {
+        if(side == true)
+        {
+            return Color.blue;
+        }
+        else
+        {
+            return Color.red;
+        }
     }
 }
