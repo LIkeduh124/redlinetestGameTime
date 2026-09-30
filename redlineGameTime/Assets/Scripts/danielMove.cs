@@ -11,7 +11,7 @@ public class danielMove : CharacterBasic
 
     public override void PlayerInput()
     {
-        spriteRenderer.color = SetColor(!(GameData.Instance.sideCheck));
+        if (GameData.Instance != null) { spriteRenderer.color = SetColor(!(GameData.Instance.sideCheck)); }
         base.movement = base.benStiller.PlayerTwo.Movement.ReadValue<Vector2>();
         reverse = -(movement);
     }
