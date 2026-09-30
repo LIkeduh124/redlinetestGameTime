@@ -9,7 +9,7 @@ public class tobyBox1 : CharacterBasic
     public float health, maxHealth;
     private bool isHeld = false;
 
-    private SpriteRenderer spriteRenderer;
+    
 
     
 
@@ -31,6 +31,8 @@ public class tobyBox1 : CharacterBasic
 
     public override void PlayerInput()
     {
+        spriteRenderer.color = SetColor(GameData.Instance.sideCheck);
+
         //Defines how we move based on the values in our input map
         movement = base.benStiller.Shmovement.LeftandRight.ReadValue<UnityEngine.Vector2>();
         //Shows our inputs in the console

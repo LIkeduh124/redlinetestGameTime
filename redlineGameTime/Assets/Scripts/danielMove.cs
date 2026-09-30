@@ -5,12 +5,13 @@ public class danielMove : CharacterBasic
 {
 
 
-    
+    private bool ownColor = !(GameData.Instance.sideCheck);
 
 
 
     public override void PlayerInput()
     {
+        spriteRenderer.color = SetColor(!(GameData.Instance.sideCheck));
         base.movement = base.benStiller.PlayerTwo.Movement.ReadValue<Vector2>();
         reverse = -(movement);
     }
