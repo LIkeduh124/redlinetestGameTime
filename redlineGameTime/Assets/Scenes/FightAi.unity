@@ -1092,7 +1092,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::AiChase
   player: {fileID: 552824123}
-  speed: 3
+  speed: 1
 --- !u!114 &1228756938
 MonoBehaviour:
   m_ObjectHideFlags: 0
