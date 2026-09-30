@@ -6,7 +6,7 @@ public class AttackAi : MonoBehaviour
     [SerializeField] public float detectionRange = 8f;
     [SerializeField] public float attackRange = 3f;
     [SerializeField] public float attackCooldown = 1f;
-    [SerializeField] private GameObject attack;
+    [SerializeField] public GameObject attack;
 
     private float nextAttackTime;
     private BackWall backWall;

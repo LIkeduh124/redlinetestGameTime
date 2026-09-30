@@ -9,16 +9,16 @@ public class BackWall : Appears
 
 
    
-    bool block, pressed;
+    
     
     
 
     protected override void FixedUpdate()
     {
+        
+        Appear();
         dad = this.allFather.GetComponent<Transform>().position;
         Debug.Log("The time is " + time);
-        Appear();
-        
 
         
 
@@ -26,13 +26,13 @@ public class BackWall : Appears
 
     private void Update()
     {
-        Debug.Log("");
+        //Debug.Log("");
     }
 
 
     protected override void Appear()
     {
-      
+        Debug.Log("This is running");
 
         if (time <= 0)
         {
@@ -41,16 +41,17 @@ public class BackWall : Appears
             polygonCollider.enabled = false;
             time = 0.0f;
             transform.position = dad - distance;
-            pressed = false;
+            
 
         }
-        else if (time > 0)
+        else
         {
             spriteRenderer.enabled = true;
             polygonCollider.enabled = true;
             time -= Time.fixedDeltaTime;
             Debug.Log("Time is now " + time);
             Move(5.0f);
+            Debug.Log("Should be moving now");
 
         }
 
@@ -58,9 +59,9 @@ public class BackWall : Appears
 
     protected virtual void Move(float speed)
     {
-
-        rigidbody.MovePosition(rigidbody.position + Vector2.left * speed * Time.fixedDeltaTime);
-        Debug.Log(Time.fixedDeltaTime);
+        Debug.Log(speed);
+        transform.position = (transform.position + Vector3.left*speed*Time.fixedDeltaTime);
+        Debug.Log("Motion Detected");
 
     }
 
