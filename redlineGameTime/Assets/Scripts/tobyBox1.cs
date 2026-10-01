@@ -31,7 +31,7 @@ public class tobyBox1 : CharacterBasic
 
     public override void PlayerInput()
     {
-        spriteRenderer.color = SetColor(GameData.Instance.sideCheck);
+        
 
         //Defines how we move based on the values in our input map
         movement = base.benStiller.Shmovement.LeftandRight.ReadValue<UnityEngine.Vector2>();
@@ -56,7 +56,8 @@ public class tobyBox1 : CharacterBasic
         }
 
         reverse = -(movement);
-        
+        spriteRenderer.color = SetColor(GameData.Instance.sideCheck);
+
     }
 
     

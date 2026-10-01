@@ -113,6 +113,7 @@ public class CharacterBasic : MonoBehaviour
     {
         if(side == true)
         {
+            
             return Color.blue;
         }
         else
