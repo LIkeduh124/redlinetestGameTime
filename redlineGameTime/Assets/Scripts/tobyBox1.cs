@@ -56,7 +56,7 @@ public class tobyBox1 : CharacterBasic
         }
 
         reverse = -(movement);
-        //spriteRenderer.color = SetColor(GameData.Instance.sideCheck);
+        spriteRenderer.color = SetColor(GameData.Instance.sideCheck);
 
     }
 
