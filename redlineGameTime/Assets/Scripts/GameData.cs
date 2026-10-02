@@ -13,7 +13,7 @@ public class GameData : MonoBehaviour
         {
             Instance = this;
             DontDestroyOnLoad(gameObject);
-            sideCheck = true;
+            
         }
         else
         {
