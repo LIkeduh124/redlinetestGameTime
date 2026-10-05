@@ -3,8 +3,8 @@ using UnityEngine;
 
 public class WallMode : Appears
 {
-
     
+
     private BoxCollider2D polygonCollider;
     private SpriteRenderer spriteRenderer;
     private Transform joey;
@@ -12,7 +12,7 @@ public class WallMode : Appears
     private float time;
     private bool checker;
     
-    
+    [SerializeField] private Transform opponent;
 
     private void Awake()
     {
@@ -89,7 +89,10 @@ public class WallMode : Appears
 
     protected virtual void Move(float speed)
     {
-        rigidbody.MovePosition(rigidbody.position + Vector2.right * speed * Time.fixedDeltaTime);
-        
+        if (opponent.x < transform.position.x)
+        {
+
+            rigidbody.MovePosition(rigidbody.position + Vector2.right * speed * Time.fixedDeltaTime);
+        }
     }
 }
