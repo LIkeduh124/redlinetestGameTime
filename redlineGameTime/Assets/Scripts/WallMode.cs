@@ -1,6 +1,5 @@
 using Unity.VisualScripting;
 using UnityEngine;
-using UnityEngine.Rendering;
 
 public class WallMode : Appears
 {
@@ -96,12 +95,10 @@ public class WallMode : Appears
             return;
             //do NOTHING if nothing
         }
-        
-        float direction  = Mathf.Sign(opponent.position.x - transform.position.x);
+        //if (opponent.x < transform.position.x)
+        //{
 
-        spriteRenderer.flipX = direction < 0;
-
-            rigidbody.MovePosition(rigidbody.position + Vector2.right * direction * speed * Time.fixedDeltaTime);
-        
+            rigidbody.MovePosition(rigidbody.position + Vector2.right * speed * Time.fixedDeltaTime);
+        //}
     }
 }
