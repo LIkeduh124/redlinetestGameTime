@@ -6,13 +6,14 @@ public class WallMode : Appears
     
 
     private BoxCollider2D polygonCollider;
+    [SerializeField] private Transform opponent;
     private SpriteRenderer spriteRenderer;
     private Transform joey;
     
     private float time;
     private bool checker;
     
-    [SerializeField] private Transform opponent;
+    
 
     private void Awake()
     {
@@ -89,10 +90,15 @@ public class WallMode : Appears
 
     protected virtual void Move(float speed)
     {
-        if (opponent.x < transform.position.x)
+        if (opponent == null)
         {
+            return;
+            //do NOTHING if nothing
+        }
+        //if (opponent.x < transform.position.x)
+        //{
 
             rigidbody.MovePosition(rigidbody.position + Vector2.right * speed * Time.fixedDeltaTime);
-        }
+        //}
     }
 }
