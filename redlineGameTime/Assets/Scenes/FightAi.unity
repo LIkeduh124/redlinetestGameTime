@@ -648,6 +648,7 @@ GameObject:
   - component: {fileID: 552824129}
   - component: {fileID: 552824130}
   - component: {fileID: 552824131}
+  - component: {fileID: 552824132}
   m_Layer: 0
   m_Name: AbeLincoln
   m_TagString: Character
@@ -742,16 +743,15 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 0
   m_BlendShapeWeights: []
---- !u!4 &552824126
-Transform:
+--- !u!224 &552824126
+RectTransform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 552824123}
-  serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -4.5035105, y: 0.89699, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 2.52, y: 1.52, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -759,6 +759,11 @@ Transform:
   - {fileID: 1684457720}
   m_Father: {fileID: 904012264}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: -4.5035105, y: 0.89699}
+  m_SizeDelta: {x: 1, y: 1}
+  m_Pivot: {x: 0.5, y: 0.28866667}
 --- !u!60 &552824128
 PolygonCollider2D:
   m_ObjectHideFlags: 0
@@ -862,6 +867,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: '::'
   opponent: {fileID: 1228756935}
+--- !u!222 &552824132
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 552824123}
+  m_CullTransparentMesh: 1
 --- !u!1 &904012263
 GameObject:
   m_ObjectHideFlags: 0
@@ -1367,7 +1380,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5db5c8cd94f39424397259c6d6ea61cd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerDirection
-  opponent: {fileID: 552824126}
+  opponent: {fileID: 0}
 --- !u!1 &1320949144
 GameObject:
   m_ObjectHideFlags: 0
@@ -1459,6 +1472,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: '::'
   time: 0
   father: {fileID: 1228756930}
+  opponent: {fileID: 0}
 --- !u!61 &1320949149
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1775,6 +1789,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: '::'
   time: 0
   father: {fileID: 552824123}
+  opponent: {fileID: 0}
 --- !u!61 &1684457722
 BoxCollider2D:
   m_ObjectHideFlags: 0
