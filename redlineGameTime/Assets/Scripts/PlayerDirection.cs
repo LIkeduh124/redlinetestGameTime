@@ -3,13 +3,9 @@ using UnityEngine;
 public class PlayerDirection : MonoBehaviour
 {
     [SerializeField] private Transform opponent;
-    private SpriteRenderer playerSprite;
 
 
-        private void Awake()
-    {
-        playerSprite  = GetComponent<SpriteRenderer>();
-    }
+
 
     private void Update()
     {
@@ -19,14 +15,15 @@ public class PlayerDirection : MonoBehaviour
             //do NOTHING if nothing
         }
 
-        if (opponent.position.x > transform.position.x)
+        if (opponent.position.x > opponent.position.x)
         {
-            playerSprite.flipX = false;
+            transform.localScale = new Vector3(Mathf.Abs(transform.localScale.x), transform.localScale.y, transform.localScale.z);
+            //if the enemy is facing the right of the player.
         }
-        if (opponent.position.x < transform.position.x)
+        if (opponent.position.x < opponent.position.x)
         {
-            Debug.Log("sprite flipped!");
-            playerSprite.flipX = true;
+            transform.localScale = new Vector3(-Mathf.Abs(transform.localScale.x), transform.localScale.y, transform.localScale.z);
+            //if the enemy is facing the left of the player.
         }
     }
 

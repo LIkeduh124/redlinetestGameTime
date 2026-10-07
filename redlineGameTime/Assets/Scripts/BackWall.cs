@@ -18,7 +18,7 @@ public class BackWall : Appears
         
         Appear();
         dad = this.allFather.GetComponent<Transform>().position;
-        //Debug.Log("The time is " + time);
+        Debug.Log("The time is " + time);
 
         
 
@@ -49,7 +49,7 @@ public class BackWall : Appears
             spriteRenderer.enabled = true;
             polygonCollider.enabled = true;
             time -= Time.fixedDeltaTime;
-            //Debug.Log("Time is now " + time);
+            Debug.Log("Time is now " + time);
             Move(5.0f);
             Debug.Log("Should be moving now");
 
