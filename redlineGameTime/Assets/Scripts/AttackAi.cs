@@ -22,8 +22,8 @@ public class AttackAi : MonoBehaviour
     }
     void Update()
     {
-        attackCooldown -= Time.deltaTime;
-        if ( (player == null)  && (attackCooldown == 0))
+        
+        if (player == null)
         {
             return;
         }
