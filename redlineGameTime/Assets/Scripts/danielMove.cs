@@ -7,7 +7,15 @@ public class danielMove : CharacterBasic
 
     private bool ownColor = !(GameData.Instance.sideCheck);
 
+    public void SetHealth(float healthChange)
+    {
 
+        //changes the health into the amount thats change
+
+
+        allHealth.SetHealth(healthChange);
+
+    }
 
     public override void PlayerInput()
     {
@@ -41,6 +49,7 @@ public class danielMove : CharacterBasic
     {
         if (!(other.CompareTag("DanielHitbox")))
         {
+            SetHealth(-20);
             stun = .5f;
             reverse = (transform.position - other.transform.position);
         }
