@@ -60,7 +60,7 @@ public class BackWall : Appears
     protected virtual void Move(float speed)
     {
         Debug.Log(speed);
-        transform.position = (transform.position + Vector3.left*speed*Time.fixedDeltaTime);
+        //transform.position = (transform.position + Vector3.left*speed*Time.fixedDeltaTime);
         Debug.Log("Motion Detected");
 
     }
