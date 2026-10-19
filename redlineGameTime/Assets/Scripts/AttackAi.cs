@@ -17,10 +17,13 @@ public class AttackAi : MonoBehaviour
     {
         //Debug.Log(attack);
         backWall = GetComponent<BackWall>();
+        
+        
     }
     void Update()
     {
-        if (player == null)
+        attackCooldown -= Time.deltaTime;
+        if ( (player == null)  && (attackCooldown == 0))
         {
             return;
         }
