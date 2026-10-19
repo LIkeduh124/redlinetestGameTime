@@ -12,6 +12,7 @@ public class AttackAi : MonoBehaviour
     private BackWall backWall;
     // Update is called once per frame
 
+
     public void Awake()
     {
         //Debug.Log(attack);
