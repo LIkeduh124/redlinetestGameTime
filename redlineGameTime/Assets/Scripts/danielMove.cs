@@ -5,7 +5,7 @@ public class danielMove : CharacterBasic
 {
 
 
-    private bool ownColor = !(GameData.Instance.sideCheck);
+    
 
     public void SetHealth(float healthChange)
     {
@@ -19,7 +19,7 @@ public class danielMove : CharacterBasic
 
     public override void PlayerInput()
     {
-        if (GameData.Instance != null) { spriteRenderer.color = SetColor(!(GameData.Instance.sideCheck)); }
+        if (GameData.Instance != null) { spriteRenderer.sprite = SetColor(!(GameData.Instance.sideCheck)); }
         base.movement = base.benStiller.PlayerTwo.Movement.ReadValue<Vector2>();
         reverse = -(movement);
     }

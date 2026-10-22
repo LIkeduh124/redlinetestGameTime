@@ -1,6 +1,7 @@
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.UIElements;
 public class CharacterBasic : MonoBehaviour
 {
     [SerializeField] float speed = 5.0f;
@@ -18,7 +19,7 @@ public class CharacterBasic : MonoBehaviour
     protected SpriteRenderer spriteRenderer;
     [SerializeField] HealthManager healthBar;
     protected HealthManager allHealth;
-
+    
 
 
     
@@ -109,16 +110,16 @@ public class CharacterBasic : MonoBehaviour
         rigidbody.MovePosition(rigidbody.position + reverse * speed * Time.fixedDeltaTime);
     }
 
-    public Color SetColor(bool side)
+    public Sprite SetColor(bool side)
     {
         if(side == true)
         {
             
-            return Color.blue;
+            return Holding.allUnion;
         }
         else
         {
-            return Color.red;
+            return Holding.allConfed;
         }
     }
 }
